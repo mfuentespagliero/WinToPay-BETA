@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producto 1 - WinToPay</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #111;
+  font-family: Arial, sans-serif;
+}
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .product-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+    }
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-bar {
+  height: 72px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 20px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  gap: 24px;
+  min-width: 0;
+}
+.brand {
+  justify-self: center;
+  text-align: center;
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-size: clamp(24px, 2.2vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 200;
+  white-space: nowrap;
+}
+.header-cart {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  min-width: 48px;
+  justify-content: flex-end;
+}
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 24px;
+}
+.desktop-nav a {
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 200;
+  white-space: nowrap;
+}
+
+.menu-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: rgba(255,255,255,0.92);
+}
+
+.cart-toggle {
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.92);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .desktop-nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .side-menu,
+  .menu-overlay {
+    display: none;
+  }
+}
+
+
+    .header-left {
+      justify-self: start;
+      display: flex;
+      gap: 18px;
+    }
+
+    .header-center {
+      justify-self: center;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .header-right {
+      justify-self: end;
+    }
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  padding: 104px 24px 32px;
+  align-items: start;
+}
+
+.recommended {
+  padding: 0 24px 32px;
+}
+
+.product-gallery {
+  background: #f3f3f3;
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+    .product-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .product-title {
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .product-price {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+.product-description {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.72);
+}
+
+.product-meta {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+}
+
+    .product-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+.btn {
+  border: 1px solid #111;
+  background: transparent;
+  color: #111;
+  padding: 14px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+.recommended {
+  padding: 0 24px 32px;
+  background: #fff;
+}
+
+.recommended h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  color: #111;
+}
+
+.recommended-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f2;
+  color: #111;
+  overflow: hidden;
+}
+
+.product-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #e8e8e8;
+  overflow: hidden;
+}
+
+.product-media a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-add {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.product-add:hover {
+  background: #111;
+  color: #fff;
+}
+
+.product-body {
+  padding: 14px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title,
+.card-price {
+  color: #111;
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card-price {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #555;
+}
+.products-footer {
+  padding: 28px 24px 36px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+    .products-footer-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+.footer-brand,
+.footer-links a,
+.footer-copy,
+.footer-copy p,
+.footer-copy a {
+  color: #111;
+}
+    .footer-brand {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .footer-copy p {
+      margin: 0;
+    }
+
+    .menu-overlay,
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 40;
+}
+
+.side-menu,
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: min(320px, 86vw);
+  background: #fff;
+  color: #111;
+  z-index: 50;
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: min(320px, 86vw);
+  background: #fff;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(320px, 86vw);
+  background: #fff;
+  z-index: 50;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.side-menu-top,
+.cart-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.side-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.side-menu-nav a,
+.side-menu-bottom a {
+  color: #111;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.side-menu-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cart-empty {
+  margin: 0;
+  color: #666;
+}
+
+.cart-bottom {
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.cart-checkout {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu-close,
+.cart-close,
+.menu-toggle,
+.cart-toggle {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+
+body.menu-open .side-menu {
+  transform: translateX(0);
+}
+
+body.menu-open .menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.cart-open .cart-drawer {
+  transform: translateX(0);
+}
+
+body.cart-open .cart-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+    @media (max-width: 1100px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .recommended-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        grid-template-columns: 1fr auto 1fr;
+        padding: 14px 16px;
+      }
+
+      .header-left {
+        gap: 12px;
+      }
+
+      .header-center {
+        font-size: 20px;
+      }
+
+      .recommended-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .products-footer-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .footer-copy {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="side-menu" id="sideMenu" aria-label="Menú principal">
+  <div class="side-menu-top">
+    <button class="menu-close" id="menuClose" type="button">×</button>
+  </div>
+
+  <nav class="side-menu-nav">
+    <a href="index.html">Juegos</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="reglas.html">Reglas</a>
+  </nav>
+
+  <div class="side-menu-bottom">
+    <a href="index.html">Volver al juego</a>
+    <a href="producto.html" target="_blank">Ver producto</a>
+  </div>
+</aside>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Carro de compras">
+  <div class="cart-top">
+    <h2>Carro</h2>
+    <button class="cart-close" id="cartClose" type="button">×</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Tu carro está vacío.</p>
+  </div>
+
+  <div class="cart-bottom">
+    <button class="cart-checkout" type="button">Ir al pago</button>
+  </div>
+</aside>
+
+
+  <div class="product-page">
+
+<header class="site-header">
+  <div class="header-bar">
+    <div class="header-actions">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="index.html">Juegos</a>
+        <a href="catalogo.html">Catalogo</a>
+        <a href="reglas.html">Reglas</a>
+      </nav>
+    </div>
+
+    <a href="index.html" class="brand">WinToPay</a>
+
+    <div class="header-cart">
+      <button class="cart-toggle" id="cartToggle" aria-label="Abrir carro">🛒</button>
+    </div>
+  </div>
+</header>
+
+    <main class="product-detail">
+      <section class="product-gallery">
+        <img src="img/producto-1.jpg" alt="Producto 1">
+      </section>
+
+      <section class="product-info">
+        <h1 class="product-title">Producto 1</h1>
+        <p class="product-price">$12.990</p>
+
+        <div class="product-meta">
+          Desbloqueado por rendimiento en el juego
+        </div>
+
+        <div class="product-description">
+          Este producto forma parte del catálogo desbloqueable de WinToPay.
+          Puedes acceder a él según tu tiempo o desempeño dentro del juego.
+        </div>
+
+        <div class="product-actions">
+          <button class="btn" type="button">Agregar al carro</button>
+          <a class="btn" href="index.html">Seguir jugando</a>
+        </div>
+      </section>
+    </main>
+
+    <section class="recommended">
+      <h2>También te puede interesar</h2>
+
+      <div class="recommended-grid">
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html" target="_blank">
+              <img src="img/producto-2.jpg" alt="Producto 2">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" target="_blank" class="card-title">Producto 2</a>
+            <a href="producto.html" target="_blank" class="card-price">$18.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html" target="_blank">
+              <img src="img/producto-3.jpg" alt="Producto 3">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" target="_blank" class="card-title">Producto 3</a>
+            <a href="producto.html" target="_blank" class="card-price">$22.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html" target="_blank">
+              <img src="img/producto-4.jpg" alt="Producto 4">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" target="_blank" class="card-title">Producto 4</a>
+            <a href="producto.html" target="_blank" class="card-price">$14.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html" target="_blank">
+              <img src="img/producto-5.jpg" alt="Producto 5">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" target="_blank" class="card-title">Producto 5</a>
+            <a href="producto.html" target="_blank" class="card-price">$9.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="products-footer">
+      <div class="products-footer-inner">
+        <div class="footer-brand">WinToPay</div>
+
+        <div class="footer-links">
+          <a href="index.html">Juegos</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="reglas.html">Reglas</a>
+        </div>
+
+        <div class="footer-copy">
+          <p>Desbloquea productos según tu tiempo final.</p>
+          <p>Los accesos y beneficios están sujetos al resultado obtenido en el juego.</p>
+          <p>© 2026 WinToPay · Términos y condiciones · Privacidad</p>
+        </div>
+      </div>
+    </footer>
+
+  <script>
+    const body = document.body;
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menuClose = document.getElementById("menuClose");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    const cartToggle = document.getElementById("cartToggle");
+    const cartClose = document.getElementById("cartClose");
+    const cartOverlay = document.getElementById("cartOverlay");
+
+    menuToggle?.addEventListener("click", () => {
+      body.classList.add("menu-open");
+      body.classList.remove("cart-open");
+    });
+
+    menuClose?.addEventListener("click", () => {
+      body.classList.remove("menu-open");
+    });
+
+    menuOverlay?.addEventListener("click", () => {
+      body.classList.remove("menu-open");
+    });
+
+    cartToggle?.addEventListener("click", () => {
+      body.classList.add("cart-open");
+      body.classList.remove("menu-open");
+    });
+
+    cartClose?.addEventListener("click", () => {
+      body.classList.remove("cart-open");
+    });
+
+    cartOverlay?.addEventListener("click", () => {
+      body.classList.remove("cart-open");
+    });
+  </script>
+
+  </div>
+</body>
+</html>
