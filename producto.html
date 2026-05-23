@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>WinToPay</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+<!-- --------Asides-------- -->
+<div class="menu-overlay"></div>
+<aside class="side-menu" aria-label="Menú principal">
+  <div class="side-menu-top">
+    <button class="menu-close" type="button">×</button>
+  </div>
+
+  <nav class="side-menu-nav">
+    <a href="index.html">Juegos</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="reglas.html">Reglas</a>
+  </nav>
+</aside>
+<div class="cart-overlay"></div>
+<aside class="cart-drawer" aria-label="Carro de compras">
+  <div class="cart-top">
+    <h2>Carro</h2>
+    <button class="cart-close" type="button">×</button>
+  </div>
+
+  <div class="cart-body">
+    <p class="cart-empty">Tu carro está vacío.</p>
+  </div>
+
+  <div class="cart-bottom">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong>$0</strong>
+    </div>
+    <button class="cart-checkout">Ir a pagar</button>
+  </div>
+</aside>
+<!-- -------Layout--------- -->
+  <div class="product-page">
+
+    <header class="site-header">
+      <div class="header-bar">
+        <div class="header-actions">
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="desktop-nav" aria-label="Navegación principal">
+            <a href="index.html">Juegos</a>
+            <a href="catalogo.html">Catalogo</a>
+            <a href="reglas.html">Reglas</a>
+          </nav>
+        </div>
+
+        <a href="index.html" class="brand">WinToPay</a>
+
+        <div class="header-cart">
+          <button class="cart-toggle" id="cartToggle" aria-label="Abrir carro">🛒</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-detail">
+      <section class="product-gallery">
+        <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 1">
+      </section>
+
+      <section class="product-info">
+        <h1 class="product-title">Producto 1</h1>
+        <p class="product-price">$12.990</p>
+
+        <div class="product-meta">
+          Desbloqueado por rendimiento en el juego
+        </div>
+
+        <div class="product-description">
+          Este producto forma parte del catálogo desbloqueable de WinToPay.
+          Puedes acceder a él según tu tiempo o desempeño dentro del juego.
+        </div>
+
+        <div class="product-actions">
+          <button class="btn" type="button">Agregar al carro</button>
+          <a class="btn" href="index.html">Seguir jugando</a>
+        </div>
+      </section>
+    </main>
+
+    <section class="recommended">
+      <h2>También te puede interesar</h2>
+
+      <div class="recommended-grid">
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html">
+              <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" class="card-title">Producto 2</a>
+            <a href="producto.html" class="card-price">$18.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html">
+              <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" class="card-title">Producto 2</a>
+            <a href="producto.html" class="card-price">$18.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html">
+              <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" class="card-title">Producto 2</a>
+            <a href="producto.html" class="card-price">$18.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <a href="producto.html">
+              <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+            </a>
+            <button class="product-add" type="button">+</button>
+          </div>
+          <div class="product-body">
+            <a href="producto.html" class="card-title">Producto 2</a>
+            <a href="producto.html" class="card-price">$18.990</a>
+            <p class="card-note">Disponible al completar el reto.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="products-footer">
+      <div class="products-footer-inner">
+        <div class="footer-brand">WinToPay</div>
+
+        <div class="footer-links">
+          <a href="index.html">Juegos</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="reglas.html">Reglas</a>
+        </div>
+
+        <div class="footer-copy">
+          <p>Desbloquea productos según tu tiempo final.</p>
+          <p>Los accesos y beneficios están sujetos al resultado obtenido en el juego.</p>
+          <p>© 2026 WinToPay · Términos y condiciones · Privacidad</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+<!-- ------Scripts----- -->
+  <script src="js/ui.js"></script>
+  <script src="js/carrito.js"></script>
+<!-- ------End----- -->
+</body>
+</html>

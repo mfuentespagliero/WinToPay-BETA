@@ -1,0 +1,236 @@
+/* =========================================================
+   LAYOUT.CSS
+   Diagramaciones específicas por página.
+   Se carga en todas las páginas junto a style.css.
+========================================================= */
+
+
+/* =========================================================
+   1. INDEX — página principal (juego + productos)
+========================================================= */
+.page-layout {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 72px 1fr;
+  grid-template-areas:
+    "header header"
+    "game   products";
+}
+
+.game-section {
+  grid-area: game;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 2vw, 1.5rem);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  padding-top: calc(72px + clamp(1rem, 3vh, 2rem));
+}
+
+.minesweeper {
+  width: 100%;
+  max-width: 34rem;
+}
+
+.products-section {
+  grid-area: products;
+  padding: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: calc(72px + 24px);
+}
+
+.products-content {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+
+/* =========================================================
+   2. PRODUCTO — página de detalle de producto
+========================================================= */
+.product-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  padding: 104px 24px 32px;
+  align-items: start;
+}
+
+.product-gallery {
+  background: #f3f3f3;
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.product-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.product-info .product-title {
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 700;
+}
+
+.product-info .product-price {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.product-description {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.product-meta {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.product-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recommended {
+  padding: 0 24px 32px;
+}
+
+.recommended h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+}
+
+.recommended-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+
+/* =========================================================
+   3. CATÁLOGO — página de catálogo
+========================================================= */
+.catalog-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 72px;
+}
+
+.catalog-section {
+  flex: 1;
+  padding: 24px;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.catalog-card {
+  background: #ffffff;
+  color: #111111;
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #ececec;
+  display: grid;
+  place-items: center;
+}
+
+.catalog-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.catalog-info {
+  padding: 14px 14px 16px;
+}
+
+.catalog-info h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+.catalog-info p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.lock-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.lock-message {
+  display: grid;
+  gap: 6px;
+}
+
+.lock-message strong {
+  font-size: 34px;
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+}
+
+.lock-message span {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.catalog-card.unlocked .lock-overlay {
+  opacity: 0;
+  pointer-events: none;
+}

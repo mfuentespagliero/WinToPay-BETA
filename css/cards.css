@@ -1,0 +1,86 @@
+/* =========================================================
+   CARDS.CSS
+   Tarjetas de producto — se reusan en index, catálogo y producto.
+========================================================= */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #111111;
+  overflow: hidden;
+}
+
+.product-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #e8e8e8;
+  overflow: hidden;
+}
+
+.product-media a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-add {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.product-add:hover {
+  background: #111;
+  color: #fff;
+}
+
+.product-body {
+  padding: 14px 12px 16px;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title,
+.card-price {
+  display: block;
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.card-title {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.card-price {
+  font-size: 14px;
+}
+
+.card-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #555;
+}
