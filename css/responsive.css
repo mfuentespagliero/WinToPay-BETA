@@ -1,0 +1,97 @@
+/* 9. responsive */
+@media (min-width: 900px) {
+  .desktop-nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .side-menu,
+  .menu-overlay {
+    display: none;
+  }
+  .cart-toggle {
+    display: block;
+  }
+}
+  .main-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    margin-top: 72px;
+    overflow: visible;
+  }
+
+  .game-section {
+    padding: 20px 20px 12px;
+  }
+
+  .catalog-section {
+    padding: 12px 20px 24px;
+    overflow: visible;
+  }
+
+@media (max-width: 1280px) {
+  .minesweeper {
+    transform: scale(0.96);
+  }
+}
+@media (max-width: 1100px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .minesweeper {
+    transform: scale(0.92);
+  }
+}
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .page-layout {
+    height: auto;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px auto 1fr 56px;
+    grid-template-areas:
+      "header"
+      "game"
+      "products"
+      "footer";
+  }
+
+  .game-section {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .products-section {
+    overflow: visible;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .minesweeper {
+    transform: scale(0.88);
+  }
+}
+@media (max-width: 640px) {
+  .catalog-section {
+    padding: 16px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lock-message strong {
+    font-size: 28px;
+  }
+}
