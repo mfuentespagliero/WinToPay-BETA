@@ -686,3 +686,213 @@ body.cart-open .cart-overlay {
   background: #111;
   color: #fff;
 }
+
+/* =========================================================
+   AGREGAR AL FINAL DE style.css — items del carrito
+========================================================= */
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-qty {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-item-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.cart-item-remove {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.cart-item-remove:hover {
+  color: #111;
+}
+
+/* =========================================================
+   AGREGAR AL FINAL DE style.css
+   — items del drawer, selector de talla, badge
+========================================================= */
+
+
+/* ── Items del drawer ─────────────────────────────────── */
+
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-img {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: #e8e8e8;
+  overflow: hidden;
+}
+
+.cart-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cart-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-size,
+.cart-item-qty {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-item-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-top: 2px;
+}
+
+.cart-item-remove {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+}
+
+.cart-item-remove:hover {
+  color: #111;
+}
+
+
+/* ── Badge en ícono del carro ─────────────────────────── */
+
+.cart-toggle {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  pointer-events: none;
+}
+
+
+/* ── Selector de talla en card ────────────────────────── */
+
+.size-selector {
+  padding: 10px 12px;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.size-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.size-options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.size-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #111;
+  background: transparent;
+  color: #111;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.size-btn:hover {
+  background: #111;
+  color: #fff;
+}
