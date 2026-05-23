@@ -35,40 +35,22 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
   font-family: Arial, sans-serif;
   touch-action: manipulation;
   background: var(--bg);
   color: var(--text-dark);
-=======
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  touch-action: manipulation;
-}
-
-body {
-  background: var(--bg);
-}
-
-button,
-a {
-  touch-action: manipulation;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 button {
   font: inherit;
 }
 
-<<<<<<< HEAD
 a {
   color: inherit;
   text-decoration: none;
   touch-action: manipulation;
 }
 
-=======
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 img {
   display: block;
   max-width: 100%;
@@ -88,49 +70,10 @@ img {
 
 
 /* =========================================================
-<<<<<<< HEAD
    3. HEADER
 ========================================================= */
 .site-header {
   position: fixed;
-=======
-   3. ESTRUCTURA GENERAL
-========================================================= */
-.frame {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  background: var(--surface);
-  overflow: hidden;
-  position: relative;
-}
-
-.page-layout {
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 72px 1fr;
-  grid-template-areas:
-    "header header"
-    "game products";
-}
-
-.main-layout {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  height: calc(100vh - 72px);
-  margin-top: 72px;
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   4. HEADER
-========================================================= */
-.site-header {
-  grid-area: header;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   top: 0;
   left: 0;
   right: 0;
@@ -194,21 +137,15 @@ img {
   background: var(--text);
 }
 
-<<<<<<< HEAD
 .brand {
   justify-self: center;
   text-align: center;
-=======
-.brand,
-.header-link {
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   color: var(--text);
   text-decoration: none;
   font-size: clamp(24px, 2.2vw, 38px);
   line-height: 1;
   letter-spacing: -0.05em;
   font-weight: 200;
-<<<<<<< HEAD
   white-space: nowrap;
 }
 
@@ -216,24 +153,6 @@ img {
   display: flex;
   align-items: center;
   justify-self: end;
-=======
-}
-
-.brand {
-  justify-self: center;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.header-link,
-.header-cart {
-  justify-self: end;
-}
-
-.header-cart {
-  display: flex;
-  align-items: center;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .cart-toggle {
@@ -248,11 +167,7 @@ img {
 
 
 /* =========================================================
-<<<<<<< HEAD
    4. DRAWERS / OVERLAYS
-=======
-   5. DRAWERS / OVERLAYS
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 ========================================================= */
 .menu-overlay,
 .cart-overlay {
@@ -264,18 +179,8 @@ img {
   transition: opacity 0.25s ease;
 }
 
-<<<<<<< HEAD
 .menu-overlay { z-index: 45; }
 .cart-overlay { z-index: 55; }
-=======
-.menu-overlay {
-  z-index: 45;
-}
-
-.cart-overlay {
-  z-index: 55;
-}
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 
 .side-menu {
   position: fixed;
@@ -406,11 +311,7 @@ img {
 
 
 /* =========================================================
-<<<<<<< HEAD
    5. ESTADOS GLOBALES (menu / cart open)
-=======
-   6. ESTADOS GLOBALES
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 ========================================================= */
 body.menu-open .side-menu {
   transform: translateX(0);
@@ -432,73 +333,8 @@ body.cart-open .cart-overlay {
 
 
 /* =========================================================
-<<<<<<< HEAD
    6. BUSCAMINAS
 ========================================================= */
-=======
-   7. PANTALLA PRINCIPAL
-========================================================= */
-.frame.split-layout {
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--bg);
-  overflow: hidden;
-}
-
-.game-section {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  min-width: 0;
-  min-height: 0;
-  padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 2vw, 1.5rem) clamp(1rem, 3vh, 2rem);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-.game-wrap {
-  width: min(100%, 34rem);
-  height: 100%;
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  gap: clamp(0.5rem, 1vh, 0.9rem);
-  min-width: 0;
-  min-height: 0;
-}
-
-.products-section {
-  padding: 24px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.products-content {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-content: start;
-}
-
-
-/* =========================================================
-   8. BUSCAMINAS
-========================================================= */
-.minesweeper {
-  width: 100%;
-  max-width: 34rem;
-  aspect-ratio: 1 / 1.18;
-}
-
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 .panel {
   background: var(--ms-mid);
   border-top: 5px solid var(--ms-dark);
@@ -536,40 +372,16 @@ body.cart-open .cart-overlay {
   display: none;
 }
 
-<<<<<<< HEAD
 .digit .a, .digit .d, .digit .g { width: 14px; height: 4px; left: 4px; }
 .digit .a { top: 1px; }
 .digit .g { top: 18px; }
 .digit .d { bottom: 1px; }
 .digit .b, .digit .c, .digit .e, .digit .f { width: 4px; height: 14px; }
-=======
-.digit .a,
-.digit .d,
-.digit .g {
-  width: 14px;
-  height: 4px;
-  left: 4px;
-}
-
-.digit .a { top: 1px; }
-.digit .g { top: 18px; }
-.digit .d { bottom: 1px; }
-
-.digit .b,
-.digit .c,
-.digit .e,
-.digit .f {
-  width: 4px;
-  height: 14px;
-}
-
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 .digit .b { top: 4px; right: 1px; }
 .digit .c { bottom: 4px; right: 1px; }
 .digit .e { bottom: 4px; left: 1px; }
 .digit .f { top: 4px; left: 1px; }
 
-<<<<<<< HEAD
 .digit.zero .a, .digit.zero .b, .digit.zero .c,
 .digit.zero .d, .digit.zero .e, .digit.zero .f,
 .digit.one .b, .digit.one .c,
@@ -583,57 +395,6 @@ body.cart-open .cart-overlay {
 .digit.eight .e, .digit.eight .f, .digit.eight .g,
 .digit.nine .a, .digit.nine .b, .digit.nine .c,
 .digit.nine .d, .digit.nine .f, .digit.nine .g {
-=======
-.digit.zero .a,
-.digit.zero .b,
-.digit.zero .c,
-.digit.zero .d,
-.digit.zero .e,
-.digit.zero .f,
-.digit.one .b,
-.digit.one .c,
-.digit.two .a,
-.digit.two .b,
-.digit.two .d,
-.digit.two .e,
-.digit.two .g,
-.digit.three .a,
-.digit.three .b,
-.digit.three .c,
-.digit.three .d,
-.digit.three .g,
-.digit.four .b,
-.digit.four .c,
-.digit.four .f,
-.digit.four .g,
-.digit.five .a,
-.digit.five .c,
-.digit.five .d,
-.digit.five .f,
-.digit.five .g,
-.digit.six .a,
-.digit.six .c,
-.digit.six .d,
-.digit.six .e,
-.digit.six .f,
-.digit.six .g,
-.digit.seven .a,
-.digit.seven .b,
-.digit.seven .c,
-.digit.eight .a,
-.digit.eight .b,
-.digit.eight .c,
-.digit.eight .d,
-.digit.eight .e,
-.digit.eight .f,
-.digit.eight .g,
-.digit.nine .a,
-.digit.nine .b,
-.digit.nine .c,
-.digit.nine .d,
-.digit.nine .f,
-.digit.nine .g {
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   display: block;
 }
 
@@ -676,11 +437,7 @@ body.cart-open .cart-overlay {
   top: 10px;
 }
 
-<<<<<<< HEAD
 .smiley .eye.left  { left: 8px; }
-=======
-.smiley .eye.left { left: 8px; }
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 .smiley .eye.right { right: 8px; }
 
 .smiley .mouth {
@@ -715,15 +472,8 @@ body.cart-open .cart-overlay {
   top: 8px;
 }
 
-<<<<<<< HEAD
 .smiley.dead .eye.left::before, .smiley.dead .eye.left::after,
 .smiley.dead .eye.right::before, .smiley.dead .eye.right::after {
-=======
-.smiley.dead .eye.left::before,
-.smiley.dead .eye.left::after,
-.smiley.dead .eye.right::before,
-.smiley.dead .eye.right::after {
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   content: "";
   position: absolute;
   width: 8px;
@@ -734,21 +484,10 @@ body.cart-open .cart-overlay {
 }
 
 .smiley.dead .eye.left::before,
-<<<<<<< HEAD
 .smiley.dead .eye.right::before { transform: rotate(45deg); }
 
 .smiley.dead .eye.left::after,
 .smiley.dead .eye.right::after  { transform: rotate(-45deg); }
-=======
-.smiley.dead .eye.right::before {
-  transform: rotate(45deg);
-}
-
-.smiley.dead .eye.left::after,
-.smiley.dead .eye.right::after {
-  transform: rotate(-45deg);
-}
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 
 .smiley.cool::before,
 .smiley.cool::after {
@@ -762,16 +501,8 @@ body.cart-open .cart-overlay {
 }
 
 .smiley.cool::before { left: 4px; }
-<<<<<<< HEAD
 .smiley.cool::after  { right: 4px; }
 .smiley.cool .eye    { display: none; }
-=======
-.smiley.cool::after { right: 4px; }
-
-.smiley.cool .eye {
-  display: none;
-}
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 
 .smiley.cool .bridge {
   position: absolute;
@@ -822,15 +553,8 @@ body.cart-open .cart-overlay {
 .cell.flagged::before {
   content: "";
   position: absolute;
-<<<<<<< HEAD
   left: 13px; top: 7px;
   width: 0; height: 0;
-=======
-  left: 13px;
-  top: 7px;
-  width: 0;
-  height: 0;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
   border-left: 14px solid #d00000;
@@ -839,40 +563,12 @@ body.cart-open .cart-overlay {
 .cell.flagged::after {
   content: "";
   position: absolute;
-<<<<<<< HEAD
   left: 10px; top: 6px;
   width: 3px; height: 20px;
-=======
-  left: 10px;
-  top: 6px;
-  width: 3px;
-  height: 20px;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   background: #000;
   box-shadow: 3px 15px 0 0 #000;
 }
 
-<<<<<<< HEAD
-=======
-.cell.mine.revealed::before,
-.cell.mine.revealed::after {
-  content: "";
-  position: absolute;
-  background: #000;
-}
-
-.cell.mine.revealed::before {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
-.cell.mine.revealed::after {
-  width: 20px;
-  height: 2px;
-}
-
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 .cell.mine.revealed .mine-shape,
 .cell.mine.revealed .mine-shape::before,
 .cell.mine.revealed .mine-shape::after {
@@ -887,7 +583,6 @@ body.cart-open .cart-overlay {
 }
 
 .cell.mine.revealed .mine-shape::before {
-<<<<<<< HEAD
   width: 22px; height: 2px;
   left: -10px; top: 10px;
 }
@@ -896,30 +591,11 @@ body.cart-open .cart-overlay {
   width: 2px; height: 22px;
   transform: rotate(45deg);
   top: 0; left: 0;
-=======
-  width: 22px;
-  height: 2px;
-  left: -10px;
-  top: 10px;
-}
-
-.cell.mine.revealed .mine-shape::after {
-  width: 2px;
-  height: 22px;
-  transform: rotate(45deg);
-  top: 0;
-  left: 0;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .cell.mine.revealed .mine-cross {
   position: absolute;
-<<<<<<< HEAD
   width: 2px; height: 22px;
-=======
-  width: 2px;
-  height: 22px;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   background: #000;
   transform: rotate(-45deg);
 }
@@ -942,7 +618,6 @@ body.cart-open .cart-overlay {
   margin: 0;
 }
 
-<<<<<<< HEAD
 .status:empty { display: none; }
 
 
@@ -953,214 +628,6 @@ body.cart-open .cart-overlay {
   margin-top: 28px;
   padding: 18px 24px 36px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-=======
-.status:empty {
-  display: none;
-}
-
-
-/* =========================================================
-   9. LOCK STATES
-========================================================= */
-.lock-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.68);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: opacity 0.2s ease;
-}
-
-.lock-message {
-  display: grid;
-  gap: 6px;
-}
-
-.lock-message strong {
-  font-size: 34px;
-  line-height: 0.95;
-  font-weight: 300;
-  letter-spacing: -0.05em;
-}
-
-.lock-message span {
-  font-size: 15px;
-  color: rgba(0, 0, 0, 0.72);
-}
-
-.catalog-card.unlocked .lock-overlay {
-  opacity: 0;
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   10. CATÁLOGO
-========================================================= */
-.catalog-section {
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.catalog-card {
-  background: #ffffff;
-  color: #111111;
-  position: relative;
-  overflow: hidden;
-}
-
-.catalog-visual {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: #ececec;
-  display: grid;
-  place-items: center;
-}
-
-.catalog-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.catalog-info {
-  padding: 14px 14px 16px;
-}
-
-.catalog-info h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-weight: 500;
-}
-
-.catalog-info p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.35;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-
-/* =========================================================
-   11. PRODUCTOS
-========================================================= */
-.product-card {
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  color: #111111;
-}
-
-.product-media {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  background: #e8e8e8;
-  overflow: hidden;
-}
-
-.product-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.product-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.product-add {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 34px;
-  height: 34px;
-  border: 1px solid #ffffff;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #111111;
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-}
-
-.product-add:hover {
-  background: #111111;
-  color: #ffffff;
-}
-
-.product-body {
-  background: #f3f3f3;
-  padding: 16px 20px;
-  min-height: 130px;
-}
-
-.card-title,
-.card-price {
-  display: block;
-  color: #111;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.card-note {
-  margin-top: 12px;
-  color: #444;
-}
-
-.product-title {
-  display: inline-block;
-  color: #000000;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-
-.product-price {
-  margin: 0 0 6px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #000000;
-}
-
-.product-note {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.3;
-  color: #555555;
-}
-
-
-/* =========================================================
-   12. FOOTER
-========================================================= */
-.products-footer {
-  margin-top: 28px;
-  padding-top: 18px;
-  padding-bottom: 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  background: transparent;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .products-footer-inner {
@@ -1168,10 +635,6 @@ body.cart-open .cart-overlay {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 20px;
-<<<<<<< HEAD
-=======
-  background: transparent;
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .footer-brand {
@@ -1182,13 +645,6 @@ body.cart-open .cart-overlay {
   font-weight: 200;
 }
 
-<<<<<<< HEAD
-=======
-.site-footer {
-  display: none;
-}
-
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 .footer-links {
   display: flex;
   justify-content: center;
@@ -1208,7 +664,6 @@ body.cart-open .cart-overlay {
   text-align: right;
 }
 
-<<<<<<< HEAD
 .footer-copy p { margin: 0; }
 .footer-copy a { color: #000000; text-decoration: none; }
 
@@ -1231,13 +686,3 @@ body.cart-open .cart-overlay {
   background: #111;
   color: #fff;
 }
-=======
-.footer-copy p {
-  margin: 0;
-}
-
-.footer-copy a {
-  color: #000000;
-  text-decoration: none;
-}
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb

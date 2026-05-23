@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* =========================================================
    RESPONSIVE.CSS
    Todos los breakpoints del proyecto en un solo lugar.
@@ -8,27 +7,16 @@
 /* =========================================================
    Desktop nav
 ========================================================= */
-=======
-/* 9. responsive */
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 @media (min-width: 900px) {
   .desktop-nav {
     display: flex;
   }
 
-<<<<<<< HEAD
   .menu-toggle,
-=======
-  .menu-toggle {
-    display: none;
-  }
-
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   .side-menu,
   .menu-overlay {
     display: none;
   }
-<<<<<<< HEAD
 }
 
 
@@ -46,54 +34,11 @@
 
 @media (max-width: 900px) {
   body { overflow: auto; }
-=======
-  .cart-toggle {
-    display: block;
-  }
-}
-  .main-layout {
-    grid-template-columns: 1fr;
-    height: auto;
-    margin-top: 72px;
-    overflow: visible;
-  }
-
-  .game-section {
-    padding: 20px 20px 12px;
-  }
-
-  .catalog-section {
-    padding: 12px 20px 24px;
-    overflow: visible;
-  }
-
-@media (max-width: 1280px) {
-  .minesweeper {
-    transform: scale(0.96);
-  }
-}
-@media (max-width: 1100px) {
-  .catalog-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .minesweeper {
-    transform: scale(0.92);
-  }
-}
-@media (max-width: 900px) {
-  body {
-    overflow: auto;
-  }
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 
   .page-layout {
     height: auto;
     min-height: 100vh;
     grid-template-columns: 1fr;
-<<<<<<< HEAD
     grid-template-rows: 72px auto 1fr;
     grid-template-areas:
       "header"
@@ -160,43 +105,4 @@
   .card-title    { font-size: 14px; }
   .card-price    { font-size: 13px; }
   .card-note     { font-size: 12px; }
-=======
-    grid-template-rows: 72px auto 1fr 56px;
-    grid-template-areas:
-      "header"
-      "game"
-      "products"
-      "footer";
-  }
-
-  .game-section {
-    border-right: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .products-section {
-    overflow: visible;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .minesweeper {
-    transform: scale(0.88);
-  }
-}
-@media (max-width: 640px) {
-  .catalog-section {
-    padding: 16px;
-  }
-
-  .catalog-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .lock-message strong {
-    font-size: 28px;
-  }
->>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
