@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =========================================================
    CARDS.CSS
    Tarjetas de producto — se reusan en index, catálogo y producto.
@@ -8,11 +9,17 @@
   flex-direction: column;
   background: #ffffff;
   color: #111111;
+=======
+.product-card {
+  background: #fff;
+  border: none;
+>>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
   overflow: hidden;
 }
 
 .product-media {
   position: relative;
+<<<<<<< HEAD
   aspect-ratio: 1 / 1;
   background: #e8e8e8;
   overflow: hidden;
@@ -22,16 +29,24 @@
   display: block;
   width: 100%;
   height: 100%;
+=======
+>>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .product-media img {
   width: 100%;
+<<<<<<< HEAD
   height: 100%;
   object-fit: cover;
+=======
+  height: auto;
+  display: block;
+>>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .product-add {
   position: absolute;
+<<<<<<< HEAD
   right: 12px;
   bottom: 12px;
   width: 36px;
@@ -59,6 +74,22 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+=======
+  right: 16px;
+  bottom: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #111;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.product-body {
+  padding: 16px;
+  background: #f3f3f3;
+>>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
 }
 
 .card-title,
@@ -69,6 +100,7 @@
   font-weight: 700;
 }
 
+<<<<<<< HEAD
 .card-title {
   font-size: 15px;
   line-height: 1.2;
@@ -84,3 +116,10 @@
   line-height: 1.3;
   color: #555;
 }
+=======
+.card-note {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+>>>>>>> 907c9c19c728ee642aabfdcb1273f9ea25fd66eb
