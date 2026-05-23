@@ -21,7 +21,8 @@ WinToPay nace como una prueba de producto digital donde el usuario puede interac
 - CSS
 - JavaScript
 - GitHub Pages
-- Netlify
+- Cloudflare
+- Nic Chile
 
 ## Demo
 
