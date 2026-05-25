@@ -27,8 +27,8 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 16px;
-  padding-top: calc(72px + 16px);
+  padding: 0px;
+  /* padding-top: calc(72px + 16px); */
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   background: #f3f3f3;
@@ -44,7 +44,7 @@
   padding: 24px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-top: calc(72px + 24px);
+  /* padding-top: calc(72px + 24px); */
   background: var(--bg);
 }
 
@@ -75,7 +75,7 @@
   }
 
   .game-section {
-    padding: 20px 16px;
+    padding: 0px;
     padding-top: calc(72px + 20px);
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -88,7 +88,7 @@
 
   .products-section {
     padding: 16px;
-    padding-top: 16px;
+    /* padding-top: 16px; */
     overflow: visible;
   }
 

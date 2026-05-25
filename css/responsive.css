@@ -161,8 +161,8 @@
   }
 
   .game-section {
-    padding: 20px 16px;
-    padding-top: calc(72px + 20px);
+    padding: 0px;
+    /* padding-top: calc(72px + 20px); */
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     min-height: auto;
@@ -174,7 +174,7 @@
 
   .products-section {
     padding: 16px;
-    padding-top: 16px;
+    /* padding-top: 16px; */
     overflow: visible;
   }
 
