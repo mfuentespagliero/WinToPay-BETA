@@ -336,6 +336,7 @@ body.cart-open .cart-overlay {
    6. BUSCAMINAS
 ========================================================= */
 .panel {
+  width: calc(var(--cols) * var(--cell) + 12px);
   background: var(--ms-mid);
   border-top: 5px solid var(--ms-dark);
   border-left: 5px solid var(--ms-dark);

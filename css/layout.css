@@ -13,7 +13,7 @@
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: minmax(0, 420px) 1fr;
   grid-template-rows: 72px 1fr;
   grid-template-areas:
     "header header"
@@ -22,18 +22,22 @@
 
 .game-section {
   grid-area: game;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-items: center;
-  padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 2vw, 1.5rem);
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  padding-top: calc(72px + 16px);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  padding-top: calc(72px + clamp(1rem, 3vh, 2rem));
+  background: #f3f3f3;
 }
 
 .minesweeper {
   width: 100%;
-  max-width: 34rem;
+  max-width: 340px;
+  transform-origin: center center;
 }
 
 .products-section {
@@ -42,6 +46,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: calc(72px + 24px);
+  background: var(--bg);
 }
 
 .products-content {
@@ -57,6 +62,43 @@
   align-content: start;
 }
 
+@media (max-width: 900px) {
+  .page-layout {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px auto auto;
+    grid-template-areas:
+      "header"
+      "game"
+      "products";
+  }
+
+  .game-section {
+    padding: 20px 16px;
+    padding-top: calc(72px + 20px);
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: auto;
+  }
+
+  .minesweeper {
+    max-width: 300px;
+  }
+
+  .products-section {
+    padding: 16px;
+    padding-top: 16px;
+    overflow: visible;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
 
 /* =========================================================
    2. PRODUCTO — página de detalle de producto
@@ -67,77 +109,142 @@
   flex-direction: column;
 }
 
+/* Desktop: imagen + info lado a lado */
 .product-detail {
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 32px;
-  padding: 104px 24px 32px;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  padding: 96px 40px 40px;
   align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Galería: cuadrada, contenida, no se desborda */
 .product-gallery {
+  position: sticky;
+  top: 92px;
+  aspect-ratio: 1 / 1;
   background: #f3f3f3;
-  min-height: 620px;
-  display: grid;
-  place-items: center;
   overflow: hidden;
 }
 
 .product-gallery img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
+  padding-top: 8px;
 }
 
 .product-info .product-title {
-  font-size: 34px;
+  font-size: 28px;
   line-height: 1.1;
   margin: 0;
   font-weight: 700;
 }
 
 .product-info .product-price {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   margin: 0;
 }
 
 .product-description {
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: rgba(0, 0, 0, 0.72);
 }
 
 .product-meta {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .product-actions {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
 }
 
+.product-actions .btn {
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Recomendados */
 .recommended {
-  padding: 0 24px 32px;
+  padding: 0 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .recommended h2 {
   margin: 0 0 18px;
-  font-size: 24px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
 }
 
 .recommended-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
+}
+
+/* Mobile: apilado */
+@media (max-width: 768px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 72px 0 0;
+  }
+
+  .product-gallery {
+    position: static;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+
+  .product-info {
+    padding: 20px 16px 24px;
+    gap: 14px;
+  }
+
+  .product-info .product-title {
+    font-size: 22px;
+  }
+
+  .product-info .product-price {
+    font-size: 18px;
+  }
+
+  .product-actions .btn {
+    padding: 14px;
+  }
+
+  .recommended {
+    padding: 0 16px 32px;
+  }
+
+  .recommended-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 }
 
 
@@ -233,4 +340,10 @@
 .catalog-card.unlocked .lock-overlay {
   opacity: 0;
   pointer-events: none;
+}
+@media (max-width: 900px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 }
