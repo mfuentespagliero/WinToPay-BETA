@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>WinToPay</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/cards.css">
-<link rel="stylesheet" href="css/responsive.css">
-
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
@@ -17,7 +16,6 @@
   <div class="side-menu-top">
     <button class="menu-close" type="button">×</button>
   </div>
-
   <nav class="side-menu-nav">
     <a href="index.html">Juegos</a>
     <a href="catalogo.html">Catálogo</a>
@@ -30,11 +28,9 @@
     <h2>Carro</h2>
     <button class="cart-close" type="button">×</button>
   </div>
-
   <div class="cart-body">
     <p class="cart-empty">Tu carro está vacío.</p>
   </div>
-
   <div class="cart-bottom">
     <div class="cart-total">
       <span>Total</span>
@@ -43,202 +39,242 @@
     <button class="cart-checkout">Ir a pagar</button>
   </div>
 </aside>
+
 <!-- -------Layout--------- -->
-  <div class="product-page">
+<div class="product-page">
 
-    <header class="site-header">
-      <div class="header-bar">
-        <div class="header-actions">
-          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <nav class="desktop-nav" aria-label="Navegación principal">
-            <a href="index.html">Juegos</a>
-            <a href="catalogo.html">Catalogo</a>
-            <a href="reglas.html">Reglas</a>
-          </nav>
-        </div>
-
-        <a href="index.html" class="brand">WinToPay</a>
-
-        <div class="header-cart">
-          <button class="cart-toggle" id="cartToggle" aria-label="Abrir carro">🛒</button>
-        </div>
+  <header class="site-header">
+    <div class="header-bar">
+      <div class="header-actions">
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+          <a href="index.html">Juegos</a>
+          <a href="catalogo.html">Catalogo</a>
+          <a href="reglas.html">Reglas</a>
+        </nav>
       </div>
-    </header>
-
-    <main class="product-detail">
-      <section class="product-gallery">
-        <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 1">
-      </section>
-
-      <section class="product-info">
-        <h1 class="product-title">Producto 1</h1>
-        <p class="product-price">$12.990</p>
-
-        <div class="product-meta">
-          Desbloqueado por rendimiento en el juego
-        </div>
-
-        <div class="product-description">
-          Este producto forma parte del catálogo desbloqueable de WinToPay.
-          Puedes acceder a él según tu tiempo o desempeño dentro del juego.
-        </div>
-
-        <div class="product-actions">
-          <button class="btn" type="button">Agregar al carro</button>
-          <a class="btn" href="index.html">Seguir jugando</a>
-        </div>
-      </section>
-    </main>
-
-    <section class="recommended">
-      <h2>También te puede interesar</h2>
-
-      <div class="recommended-grid">
-<article class="product-card">
-  <div class="product-media">
-    <a href="producto.html" class="product-link">
-      <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
-    </a>
-
-    <div class="product-price-badge">
-      <span class="price-old">$24.990</span>
-      <span class="price-current">$18.990</span>
+      <a href="index.html" class="brand">WinToPay</a>
+      <div class="header-cart">
+        <button class="cart-toggle" id="cartToggle" aria-label="Abrir carro">🛒</button>
+      </div>
     </div>
+  </header>
 
-    <button class="product-add" type="button" aria-label="Elegir talla">+</button>
+  <main class="product-detail">
 
-<div class="size-overlay">
-  <div class="size-options">
-    <button type="button" class="size-btn" data-size="S">S</button>
-    <button type="button" class="size-btn" data-size="M">M</button>
-    <button type="button" class="size-btn" data-size="L">L</button>
-    <button type="button" class="size-btn" data-size="XL">XL</button>
-  </div>
-</div>
-  </div>
-
-  <div class="product-body">
-    <a href="producto.html" class="product-title">Producto 2</a>
-    <p class="product-note">Disponible al completar el reto.</p>
-  </div>
-</article>
-
-<article class="product-card">
-  <div class="product-media">
-    <a href="producto.html" class="product-link">
-      <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
-    </a>
-
-    <div class="product-price-badge">
-      <span class="price-old">$24.990</span>
-      <span class="price-current">$18.990</span>
-    </div>
-
-    <button class="product-add" type="button" aria-label="Elegir talla">+</button>
-
-<div class="size-overlay">
-  <div class="size-options">
-    <button type="button" class="size-btn" data-size="S">S</button>
-    <button type="button" class="size-btn" data-size="M">M</button>
-    <button type="button" class="size-btn" data-size="L">L</button>
-    <button type="button" class="size-btn" data-size="XL">XL</button>
-  </div>
-</div>
-  </div>
-
-  <div class="product-body">
-    <a href="producto.html" class="product-title">Producto 2</a>
-    <p class="product-note">Disponible al completar el reto.</p>
-  </div>
-</article>
-
-<article class="product-card">
-  <div class="product-media">
-    <a href="producto.html" class="product-link">
-      <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
-    </a>
-
-    <div class="product-price-badge">
-      <span class="price-old">$24.990</span>
-      <span class="price-current">$18.990</span>
-    </div>
-
-    <button class="product-add" type="button" aria-label="Elegir talla">+</button>
-
-<div class="size-overlay">
-  <div class="size-options">
-    <button type="button" class="size-btn" data-size="S">S</button>
-    <button type="button" class="size-btn" data-size="M">M</button>
-    <button type="button" class="size-btn" data-size="L">L</button>
-    <button type="button" class="size-btn" data-size="XL">XL</button>
-  </div>
-</div>
-  </div>
-
-  <div class="product-body">
-    <a href="producto.html" class="product-title">Producto 2</a>
-    <p class="product-note">Disponible al completar el reto.</p>
-  </div>
-</article>
-
-<article class="product-card">
-  <div class="product-media">
-    <a href="producto.html" class="product-link">
-      <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
-    </a>
-
-    <div class="product-price-badge">
-      <span class="price-old">$24.990</span>
-      <span class="price-current">$18.990</span>
-    </div>
-
-    <button class="product-add" type="button" aria-label="Elegir talla">+</button>
-
-<div class="size-overlay">
-  <div class="size-options">
-    <button type="button" class="size-btn" data-size="S">S</button>
-    <button type="button" class="size-btn" data-size="M">M</button>
-    <button type="button" class="size-btn" data-size="L">L</button>
-    <button type="button" class="size-btn" data-size="XL">XL</button>
-  </div>
-</div>
-  </div>
-
-  <div class="product-body">
-    <a href="producto.html" class="product-title">Producto 2</a>
-    <p class="product-note">Disponible al completar el reto.</p>
-  </div>
-</article>
+    <!-- Galería con miniaturas -->
+    <section class="product-gallery">
+      <div class="gallery-thumbs">
+        <button class="thumb active" data-img="assets/Imagenes/Gorra sito.jpg">
+          <img src="assets/Imagenes/Gorra sito.jpg" alt="Vista 1">
+        </button>
+        <button class="thumb" data-img="assets/Imagenes/Gorra sito.jpg">
+          <img src="assets/Imagenes/Gorra sito.jpg" alt="Vista 2">
+        </button>
+        <button class="thumb" data-img="assets/Imagenes/Gorra sito.jpg">
+          <img src="assets/Imagenes/Gorra sito.jpg" alt="Vista 3">
+        </button>
+      </div>
+      <div class="gallery-main">
+        <img id="mainImage" src="assets/Imagenes/Gorra sito.jpg" alt="Producto 1">
       </div>
     </section>
 
-    <footer class="products-footer">
-      <div class="products-footer-inner">
-        <div class="footer-brand">WinToPay</div>
+    <!-- Info del producto -->
+    <section class="product-info">
+      <p class="product-meta">Desbloqueado por rendimiento en el juego</p>
+      <h1 class="product-title">Producto 1</h1>
 
-        <div class="footer-links">
-          <a href="index.html">Juegos</a>
-          <a href="catalogo.html">Catálogo</a>
-          <a href="reglas.html">Reglas</a>
-        </div>
+      <div class="product-pricing">
+        <span class="product-price-old">$15.990</span>
+        <span class="product-price">$12.990</span>
+      </div>
 
-        <div class="footer-copy">
-          <p>Desbloquea productos según tu tiempo final.</p>
-          <p>Los accesos y beneficios están sujetos al resultado obtenido en el juego.</p>
-          <p>© 2026 WinToPay · Términos y condiciones · Privacidad</p>
+      <div class="product-sizes">
+        <p class="sizes-label">TALLA</p>
+        <div class="sizes-grid">
+          <button type="button" class="size-btn" data-size="S">S</button>
+          <button type="button" class="size-btn" data-size="M">M</button>
+          <button type="button" class="size-btn" data-size="L">L</button>
+          <button type="button" class="size-btn" data-size="XL">XL</button>
         </div>
       </div>
-    </footer>
 
-  </div>
+      <div class="product-actions">
+        <button class="btn btn-primary" type="button" id="addToCartBtn">Agregar al carro</button>
+        <a class="btn btn-secondary" href="index.html">Seguir jugando</a>
+      </div>
+
+      <div class="product-description">
+        <p>Este producto forma parte del catálogo desbloqueable de WinToPay.
+        Puedes acceder a él según tu tiempo o desempeño dentro del juego.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Recomendados -->
+  <section class="recommended">
+    <h2>También te puede interesar</h2>
+    <div class="recommended-grid">
+
+      <article class="product-card">
+        <div class="product-media">
+          <a href="producto.html" class="product-link">
+            <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+          </a>
+          <div class="product-price-badge">
+            <span class="price-old">$24.990</span>
+            <span class="price-current">$18.990</span>
+          </div>
+          <button class="product-add" type="button" aria-label="Elegir talla">+</button>
+          <div class="size-overlay">
+            <div class="size-options">
+              <button type="button" class="size-btn" data-size="S">S</button>
+              <button type="button" class="size-btn" data-size="M">M</button>
+              <button type="button" class="size-btn" data-size="L">L</button>
+              <button type="button" class="size-btn" data-size="XL">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <a href="producto.html" class="product-title">Producto 2</a>
+          <p class="product-note">Disponible al completar el reto.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-media">
+          <a href="producto.html" class="product-link">
+            <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+          </a>
+          <div class="product-price-badge">
+            <span class="price-old">$24.990</span>
+            <span class="price-current">$18.990</span>
+          </div>
+          <button class="product-add" type="button" aria-label="Elegir talla">+</button>
+          <div class="size-overlay">
+            <div class="size-options">
+              <button type="button" class="size-btn" data-size="S">S</button>
+              <button type="button" class="size-btn" data-size="M">M</button>
+              <button type="button" class="size-btn" data-size="L">L</button>
+              <button type="button" class="size-btn" data-size="XL">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <a href="producto.html" class="product-title">Producto 2</a>
+          <p class="product-note">Disponible al completar el reto.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-media">
+          <a href="producto.html" class="product-link">
+            <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+          </a>
+          <div class="product-price-badge">
+            <span class="price-old">$24.990</span>
+            <span class="price-current">$18.990</span>
+          </div>
+          <button class="product-add" type="button" aria-label="Elegir talla">+</button>
+          <div class="size-overlay">
+            <div class="size-options">
+              <button type="button" class="size-btn" data-size="S">S</button>
+              <button type="button" class="size-btn" data-size="M">M</button>
+              <button type="button" class="size-btn" data-size="L">L</button>
+              <button type="button" class="size-btn" data-size="XL">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <a href="producto.html" class="product-title">Producto 2</a>
+          <p class="product-note">Disponible al completar el reto.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-media">
+          <a href="producto.html" class="product-link">
+            <img src="assets/Imagenes/Gorra sito.jpg" alt="Producto 2">
+          </a>
+          <div class="product-price-badge">
+            <span class="price-old">$24.990</span>
+            <span class="price-current">$18.990</span>
+          </div>
+          <button class="product-add" type="button" aria-label="Elegir talla">+</button>
+          <div class="size-overlay">
+            <div class="size-options">
+              <button type="button" class="size-btn" data-size="S">S</button>
+              <button type="button" class="size-btn" data-size="M">M</button>
+              <button type="button" class="size-btn" data-size="L">L</button>
+              <button type="button" class="size-btn" data-size="XL">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <a href="producto.html" class="product-title">Producto 2</a>
+          <p class="product-note">Disponible al completar el reto.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="products-footer">
+    <div class="products-footer-inner">
+      <div class="footer-brand">WinToPay</div>
+      <div class="footer-links">
+        <a href="index.html">Juegos</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="reglas.html">Reglas</a>
+      </div>
+      <div class="footer-copy">
+        <p>Desbloquea productos según tu tiempo final.</p>
+        <p>Los accesos y beneficios están sujetos al resultado obtenido en el juego.</p>
+        <p>© 2026 WinToPay · Términos y condiciones · Privacidad</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
 <!-- ------Scripts----- -->
-  <script src="js/ui.js"></script>
-  <script src="js/carrito.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/carrito.js"></script>
+<script>
+  // Galería
+  document.querySelectorAll(".thumb").forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+      document.getElementById("mainImage").src = thumb.dataset.img;
+    });
+  });
+
+  // Tallas
+  let selectedSize = null;
+
+  document.querySelectorAll(".product-sizes .size-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".product-sizes .size-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      selectedSize = btn.dataset.size;
+    });
+  });
+
+  document.getElementById("addToCartBtn").addEventListener("click", () => {
+    if (!selectedSize) {
+      alert("Por favor elige una talla.");
+      return;
+    }
+    const title = document.querySelector(".product-info .product-title").textContent.trim();
+    const price = parseInt(document.querySelector(".product-info .product-price").textContent.replace(/\D/g, ""), 10);
+    const image = document.getElementById("mainImage").src;
+    addItem(title, price, selectedSize, image);
+  });
+</script>
 <!-- ------End----- -->
 </body>
 </html>

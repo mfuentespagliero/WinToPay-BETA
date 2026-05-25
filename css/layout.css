@@ -1,7 +1,6 @@
 /* =========================================================
    LAYOUT.CSS
    Diagramaciones específicas por página.
-   Se carga en todas las páginas junto a style.css.
 ========================================================= */
 
 
@@ -27,8 +26,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0px;
-  /* padding-top: calc(72px + 16px); */
+  padding: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   background: #f3f3f3;
@@ -44,7 +42,6 @@
   padding: 24px;
   overflow-y: auto;
   overflow-x: hidden;
-  /* padding-top: calc(72px + 24px); */
   background: var(--bg);
 }
 
@@ -61,46 +58,9 @@
   align-content: start;
 }
 
-@media (max-width: 900px) {
-  .page-layout {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
-    grid-template-columns: 1fr;
-    grid-template-rows: 72px auto auto;
-    grid-template-areas:
-      "header"
-      "game"
-      "products";
-  }
-
-  .game-section {
-    padding: 0px;
-    padding-top: calc(72px + 20px);
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    min-height: auto;
-  }
-
-  .minesweeper {
-    max-width: 300px;
-  }
-
-  .products-section {
-    padding: 16px;
-    /* padding-top: 16px; */
-    overflow: visible;
-  }
-
-  .products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
 
 /* =========================================================
-   2. PRODUCTO — página de detalle de producto
+   2. PRODUCTO — página de detalle
 ========================================================= */
 .product-page {
   min-height: 100vh;
@@ -108,39 +68,83 @@
   flex-direction: column;
 }
 
-/* Desktop: imagen + info lado a lado */
 .product-detail {
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
   padding: 96px 40px 40px;
-  align-items: start;
-  max-width: 1200px;
-  margin: 0 auto;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Galería: cuadrada, contenida, no se desborda */
+/* Galería con miniaturas */
 .product-gallery {
-  position: sticky;
-  top: 92px;
-  aspect-ratio: 1 / 1;
-  background: #f3f3f3;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  top: 100px;
+  max-height: 700px;
+  max-width: 700px;
 }
 
-.product-gallery img {
+.gallery-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  border: 1px solid transparent;
+  background: #efefef;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.thumb img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
+.thumb.active {
+  border-color: #111;
+}
+
+.gallery-main {
+  background: #f3f3f3;
+  overflow: hidden;
+  max-height: 700px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  max-height: 700px;
+  object-fit: contain;
+}
+
+/* Info */
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+  height: 50%;
+  min-height: 600px;
   padding-top: 8px;
+  justify-content: space-between;
+}
+
+.product-info .product-meta {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+  margin: 0;
 }
 
 .product-info .product-title {
@@ -150,25 +154,69 @@
   font-weight: 700;
 }
 
+.product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-price-old {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
 .product-info .product-price {
   font-size: 22px;
   font-weight: 700;
   margin: 0;
 }
 
-.product-description {
-  font-size: 15px;
-  line-height: 1.6;
-  color: rgba(0, 0, 0, 0.72);
+/* Tallas */
+.product-sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.product-meta {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.sizes-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111;
+  margin: 0;
 }
 
+.sizes-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.product-sizes .size-btn {
+  min-width: 48px;
+  height: 48px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 14px;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.product-sizes .size-btn:hover {
+  border-color: #111;
+}
+
+.product-sizes .size-btn.selected {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* Botones */
 .product-actions {
   display: flex;
   flex-direction: column;
@@ -184,13 +232,48 @@
   text-transform: uppercase;
 }
 
+.btn-primary {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.btn-primary:hover { background: #333; }
+
+.btn-secondary {
+  background: transparent;
+  color: #111;
+  border-color: #111;
+}
+
+.btn-secondary:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Descripción */
+.product-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.72);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 16px;
+}
+
+.product-meta {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 /* Recomendados */
 .recommended {
-  padding: 0 40px 40px;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  padding: 0 40px 40px;
 }
 
 .recommended h2 {
@@ -205,50 +288,9 @@
   gap: 16px;
 }
 
-/* Mobile: apilado */
-@media (max-width: 768px) {
-  .product-detail {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 72px 0 0;
-  }
-
-  .product-gallery {
-    position: static;
-    aspect-ratio: 1 / 1;
-    width: 100%;
-  }
-
-  .product-info {
-    padding: 20px 16px 24px;
-    gap: 14px;
-  }
-
-  .product-info .product-title {
-    font-size: 22px;
-  }
-
-  .product-info .product-price {
-    font-size: 18px;
-  }
-
-  .product-actions .btn {
-    padding: 14px;
-  }
-
-  .recommended {
-    padding: 0 16px 32px;
-  }
-
-  .recommended-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
 
 /* =========================================================
-   3. CATÁLOGO — página de catálogo
+   3. CATÁLOGO
 ========================================================= */
 .catalog-page {
   min-height: 100vh;
@@ -340,6 +382,7 @@
   opacity: 0;
   pointer-events: none;
 }
+
 @media (max-width: 900px) {
   .catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

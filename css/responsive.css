@@ -1,152 +1,23 @@
 /* =========================================================
    RESPONSIVE.CSS
-   Todos los breakpoints del proyecto en un solo lugar.
 ========================================================= */
 
-
-/* =========================================================
-   Desktop nav
-========================================================= */
+/* ── Desktop nav ─────────────────────────────────────── */
 @media (min-width: 900px) {
-  .desktop-nav {
-    display: flex;
-  }
-
+  .desktop-nav   { display: flex; }
   .menu-toggle,
   .side-menu,
-  .menu-overlay {
-    display: none;
-  }
+  .menu-overlay  { display: none; }
 }
 
-
-/* =========================================================
-   Index — layout juego + productos
-========================================================= */
-@media (max-width: 1280px) {
-  .minesweeper { transform: scale(0.96); }
-}
-
+/* ── Index — escala del buscaminas ──────────────────── */
+@media (max-width: 1280px) { .minesweeper { transform: scale(0.96); } }
 @media (max-width: 1100px) {
-  .minesweeper    { transform: scale(0.92); }
-  .products-grid  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .minesweeper   { transform: scale(0.92); }
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 900px) {
-  body { overflow: auto; }
-
-  .page-layout {
-    height: auto;
-    min-height: 100vh;
-    grid-template-columns: 1fr;
-    grid-template-rows: 72px auto 1fr;
-    grid-template-areas:
-      "header"
-      "game"
-      "products";
-  }
-
-  /* .game-section {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  } */
-
-  .products-section { overflow: visible; }
-  .products-grid    { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .minesweeper      { transform: scale(0.88); }
-}
-
-
-/* =========================================================
-   Producto — detalle + recomendados
-========================================================= */
-@media (max-width: 1100px) {
-  .product-detail     { grid-template-columns: 1fr; }
-  .recommended-grid   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 700px) {
-  .recommended-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-}
-
-
-/* =========================================================
-   Catálogo
-========================================================= */
-@media (max-width: 1100px) {
-  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 640px) {
-  .catalog-grid       { grid-template-columns: 1fr; gap: 14px; }
-  .lock-message strong { font-size: 28px; }
-}
-
-
-/* =========================================================
-   Footer
-========================================================= */
-@media (max-width: 700px) {
-  .products-footer-inner {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-
-  .footer-copy { text-align: center; }
-}
-
-
-/* =========================================================
-   Cards
-========================================================= */
-@media (max-width: 700px) {
-  .product-body  { padding: 12px 10px 14px; }
-  .card-title    { font-size: 14px; }
-  .card-price    { font-size: 13px; }
-  .card-note     { font-size: 12px; }
-}
-
-@media (max-width: 768px) {
-  .product-detail {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 72px 0 0;
-  }
-
-  .product-gallery {
-    position: static;
-    aspect-ratio: 1 / 1;
-    width: 100%;
-  }
-
-  .product-info {
-    padding: 20px 16px 24px;
-    gap: 14px;
-  }
-
-  .product-info .product-title {
-    font-size: 22px;
-  }
-
-  .product-info .product-price {
-    font-size: 18px;
-  }
-
-  .product-actions .btn {
-    padding: 14px;
-  }
-
-  .recommended {
-    padding: 0 16px 32px;
-  }
-
-  .recommended-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
+/* ── Index — mobile apilado ─────────────────────────── */
 @media (max-width: 900px) {
   .page-layout {
     height: auto;
@@ -161,20 +32,17 @@
   }
 
   .game-section {
-    padding: 0px;
+    padding: 10%;
     /* padding-top: calc(72px + 20px); */
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     min-height: auto;
   }
 
-  .minesweeper {
-    max-width: 400px;
-  }
+  .minesweeper   { max-width: 400px; transform: none; }
 
   .products-section {
-    padding: 16px;
-    /* padding-top: 16px; */
+    padding: 0;
     overflow: visible;
   }
 
@@ -182,4 +50,75 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
+}
+
+/* ── Producto — mobile ───────────────────────────────── */
+@media (max-width: 775px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 72px 0 0;
+  }
+
+  /* Galería: miniaturas abajo en mobile */
+  .product-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    max-width: 100%;
+    max-height: none;
+  }
+
+  .gallery-thumbs {
+    flex-direction: row;
+    order: 2;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+
+  .thumb {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  .gallery-main { order: 1; max-height: none; }
+
+  .product-info {
+    padding: 20px 16px 24px;
+    gap: 14px;
+    min-height: auto;
+    height: auto;
+  }
+
+  .product-info .product-title { font-size: 22px; }
+  .product-info .product-price { font-size: 18px; }
+  .product-actions .btn        { padding: 14px; }
+
+  .recommended {
+    padding: 0 16px 32px;
+  }
+
+  .recommended-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* ── Catálogo ────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .catalog-grid         { grid-template-columns: 1fr; gap: 14px; }
+  .lock-message strong  { font-size: 28px; }
+}
+
+/* ── Footer ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .products-footer-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .footer-copy { text-align: center; }
 }
