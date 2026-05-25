@@ -35,9 +35,8 @@
 }
 
 .minesweeper {
-  width: 100%;
-  max-width: 340px;
-  transform-origin: center center;
+  width: max-content;
+  max-width: 100%;
 }
 
 .products-section {

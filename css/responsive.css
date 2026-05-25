@@ -46,10 +46,10 @@
       "products";
   }
 
-  .game-section {
+  /* .game-section {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
+  } */
 
   .products-section { overflow: visible; }
   .products-grid    { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -105,4 +105,81 @@
   .card-title    { font-size: 14px; }
   .card-price    { font-size: 13px; }
   .card-note     { font-size: 12px; }
+}
+
+@media (max-width: 768px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 72px 0 0;
+  }
+
+  .product-gallery {
+    position: static;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+
+  .product-info {
+    padding: 20px 16px 24px;
+    gap: 14px;
+  }
+
+  .product-info .product-title {
+    font-size: 22px;
+  }
+
+  .product-info .product-price {
+    font-size: 18px;
+  }
+
+  .product-actions .btn {
+    padding: 14px;
+  }
+
+  .recommended {
+    padding: 0 16px 32px;
+  }
+
+  .recommended-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-layout {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px auto auto;
+    grid-template-areas:
+      "header"
+      "game"
+      "products";
+  }
+
+  .game-section {
+    padding: 20px 16px;
+    padding-top: calc(72px + 20px);
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: auto;
+  }
+
+  .minesweeper {
+    max-width: 400px;
+  }
+
+  .products-section {
+    padding: 16px;
+    padding-top: 16px;
+    overflow: visible;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 }
