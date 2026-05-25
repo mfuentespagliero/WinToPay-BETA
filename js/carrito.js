@@ -1,15 +1,8 @@
 /* =========================================================
    CARRITO.JS
-   - Selector de talla en card antes de agregar
-   - Badge de cantidad en ícono del carro
-   - Items con foto en el drawer
-   - Eliminar items
-   - Total actualizado
-   - Persiste en localStorage
 ========================================================= */
 
 const STORAGE_KEY = "wintopay_cart";
-const SIZES = ["S", "M", "L", "XL"];
 
 // ── Leer / guardar ────────────────────────────────────────
 
@@ -25,7 +18,7 @@ function saveCart(cart) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
 }
 
-// ── Lógica del carrito ────────────────────────────────────
+// ── Lógica ────────────────────────────────────────────────
 
 function addItem(title, price, size, image) {
   const cart = getCart();
@@ -51,45 +44,33 @@ function removeItem(key) {
   updateBadge();
 }
 
-function getTotal(cart) {
-  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-}
+function getTotal(cart)    { return cart.reduce((sum, i) => sum + i.price * i.qty, 0); }
+function getTotalQty(cart) { return cart.reduce((sum, i) => sum + i.qty, 0); }
+function formatPrice(v)    { return "$" + v.toLocaleString("es-CL"); }
+function parsePrice(text)  { return parseInt((text || "").replace(/\D/g, ""), 10) || 0; }
 
-function getTotalQty(cart) {
-  return cart.reduce((sum, item) => sum + item.qty, 0);
-}
-
-// ── Badge en ícono del carro ──────────────────────────────
+// ── Badge ─────────────────────────────────────────────────
 
 function updateBadge() {
-  const cart = getCart();
-  const qty  = getTotalQty(cart);
-
+  const qty = getTotalQty(getCart());
   document.querySelectorAll(".cart-toggle").forEach(btn => {
     let badge = btn.querySelector(".cart-badge");
-
-    if (qty === 0) {
-      if (badge) badge.remove();
-      return;
-    }
-
+    if (qty === 0) { if (badge) badge.remove(); return; }
     if (!badge) {
       badge = document.createElement("span");
       badge.className = "cart-badge";
       btn.appendChild(badge);
     }
-
     badge.textContent = qty > 99 ? "99+" : qty;
   });
 }
 
-// ── Render del drawer ─────────────────────────────────────
+// ── Render drawer ─────────────────────────────────────────
 
 function renderCart() {
   const cart    = getCart();
   const body    = document.querySelector(".cart-body");
   const totalEl = document.querySelector(".cart-total strong");
-
   if (!body || !totalEl) return;
 
   if (cart.length === 0) {
@@ -120,77 +101,59 @@ function renderCart() {
   totalEl.textContent = formatPrice(getTotal(cart));
 }
 
-function formatPrice(value) {
-  return "$" + value.toLocaleString("es-CL");
-}
-
-function parsePrice(text) {
-  return parseInt(text.replace(/\D/g, ""), 10) || 0;
-}
-
-// ── Abrir carrito ─────────────────────────────────────────
-
 function openCart() {
   document.body.classList.add("cart-open");
   document.body.classList.remove("menu-open");
 }
 
-// ── Selector de talla en card ─────────────────────────────
+// ── Cards: botón + abre/cierra overlay ───────────────────
 
-function showSizeSelector(button, card) {
-  const existing = card.querySelector(".size-selector");
-  if (existing) {
-    existing.remove();
-    return;
-  }
-
-  document.querySelectorAll(".size-selector").forEach(el => el.remove());
-
-  const title = card.querySelector(".card-title")?.textContent.trim();
-  const price = parsePrice(card.querySelector(".card-price")?.textContent || "0");
-  const image = card.querySelector("img")?.src || "";
-
-  const selector = document.createElement("div");
-  selector.className = "size-selector";
-  selector.innerHTML = `
-    <span class="size-label">Talla</span>
-    <div class="size-options">
-      ${SIZES.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join("")}
-    </div>
-  `;
-
-  const media = card.querySelector(".product-media");
-  media.insertAdjacentElement("afterend", selector);
-
-  selector.querySelectorAll(".size-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      addItem(title, price, btn.dataset.size, image);
-      selector.remove();
-    });
-  });
-
-  setTimeout(() => {
-    document.addEventListener("click", function handler(e) {
-      if (!selector.contains(e.target) && e.target !== button) {
-        selector.remove();
-        document.removeEventListener("click", handler);
-      }
-    });
-  }, 0);
-}
-
-// ── Botones + en cards ────────────────────────────────────
-
-document.querySelectorAll(".product-add").forEach(button => {
-  button.addEventListener("click", (e) => {
+document.querySelectorAll(".product-add").forEach(btn => {
+  btn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const card = button.closest(".product-card");
-    showSizeSelector(button, card);
+
+    const card = btn.closest(".product-card");
+    if (!card) return;
+
+    // Cerrar otras cards abiertas
+    document.querySelectorAll(".product-card.show-sizes").forEach(c => {
+      if (c !== card) c.classList.remove("show-sizes");
+    });
+
+    card.classList.toggle("show-sizes");
   });
 });
 
-// ── Botón "Agregar al carro" en página de detalle ─────────
+// ── Cards: botones de talla en el overlay ─────────────────
+
+document.querySelectorAll(".product-card .size-overlay .size-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const card = btn.closest(".product-card");
+    if (!card) return;
+
+    const title = card.querySelector(".product-body .product-title")?.textContent.trim() || "Producto";
+    const price = parsePrice(card.querySelector(".price-current")?.textContent || "0");
+    const image = card.querySelector("img")?.src || "";
+    const size  = btn.dataset.size || btn.textContent.trim();
+
+    addItem(title, price, size, image);
+    card.classList.remove("show-sizes");
+  });
+});
+
+// Cerrar overlay al clickear fuera
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".product-card")) {
+    document.querySelectorAll(".product-card.show-sizes")
+      .forEach(c => c.classList.remove("show-sizes"));
+  }
+});
+
+// ── Página de detalle ─────────────────────────────────────
 
 const addFromDetail = document.querySelector(".product-actions .btn");
 if (addFromDetail) {
@@ -200,34 +163,35 @@ if (addFromDetail) {
     const title = document.querySelector(".product-info .product-title")?.textContent.trim();
     const price = parsePrice(document.querySelector(".product-info .product-price")?.textContent || "0");
     const image = document.querySelector(".product-gallery img")?.src || "";
-
     if (!title) return;
 
     const actions  = document.querySelector(".product-actions");
-    const existing = actions.querySelector(".size-selector");
+    const existing = document.querySelector(".detail-size-selector");
     if (existing) { existing.remove(); return; }
 
     const selector = document.createElement("div");
-    selector.className = "size-selector";
+    selector.className = "size-selector detail-size-selector";
     selector.innerHTML = `
       <span class="size-label">Talla</span>
       <div class="size-options">
-        ${SIZES.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join("")}
+        ${["S","M","L","XL"].map(s =>
+          `<button type="button" class="size-btn" data-size="${s}">${s}</button>`
+        ).join("")}
       </div>
     `;
 
     actions.insertAdjacentElement("afterend", selector);
 
-    selector.querySelectorAll(".size-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        addItem(title, price, btn.dataset.size, image);
+    selector.querySelectorAll(".size-btn").forEach(b => {
+      b.addEventListener("click", () => {
+        addItem(title, price, b.dataset.size, image);
         selector.remove();
       });
     });
   });
 }
 
-// ── Inicializar ───────────────────────────────────────────
+// ── Init ──────────────────────────────────────────────────
 
 renderCart();
 updateBadge();
