@@ -195,3 +195,10 @@ if (addFromDetail) {
 
 renderCart();
 updateBadge();
+
+const checkoutButton = document.querySelector(".cart-checkout");
+
+checkoutButton?.addEventListener("click", () => {
+  window.location.href = "checkout.html";
+});
+
