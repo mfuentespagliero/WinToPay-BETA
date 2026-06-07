@@ -290,43 +290,37 @@
       }
     }
 
-    function endGame(isWin) {
-      finished = true;
-      stopTimer();
+function endGame(isWin) {
+  finished = true;
+  stopTimer();
 
-      if (isWin) {
-        localStorage.setItem('wintopayFinalTime', seconds);
-
-        face.className = 'smiley cool';
-        statusText.textContent = 'Juego terminado. Puntaje desbloqueado.';
-      } else {
-        revealAllMines();
-        face.className = 'smiley dead';
-        statusText.textContent = 'Juego terminado.';
-      }
-    }
-
-    resetButton.addEventListener('click', resetGame);
-
-    resetGame();
-
-
-
-
-    
-
-  function updateCatalogLocks(finalTime) {
-    const cards = document.querySelectorAll(".catalog-card");
-
-    cards.forEach((card) => {
-      const threshold = Number(card.dataset.threshold);
-      const unlocked = finalTime < threshold;
-      card.classList.toggle("unlocked", unlocked);
-      card.classList.toggle("locked", !unlocked);
-    });
+  if (isWin) {
+    // Solo desbloquear si ganó en 20 segundos o menos
+    localStorage.setItem('wintopayFinalTime', seconds);
+    face.className = 'smiley cool';
+    statusText.textContent = seconds <= 20
+      ? '¡Reto completado! Productos desbloqueados.'
+      : 'Terminaste en ' + seconds + 's. Necesitas ≤20s para desbloquear.';
+    updateCatalogLocks(seconds);
+  } else {
+    revealAllMines();
+    face.className = 'smiley dead';
+    statusText.textContent = 'Juego terminado.';
   }
+}
 
-  const storedTime = Number(localStorage.getItem("wintopayFinalTime"));
-  if (Number.isFinite(storedTime)) {
-    updateCatalogLocks(storedTime);
-  }
+function updateCatalogLocks(finalTime) {
+  document.querySelectorAll(".product-card[data-threshold]").forEach((card) => {
+    const threshold = Number(card.dataset.threshold);
+    const unlocked  = finalTime <= 20 && finalTime < threshold;
+    card.classList.toggle("unlocked",  unlocked);
+    card.classList.toggle("locked",   !unlocked);
+  });
+}
+
+resetButton.addEventListener('click', resetGame);
+resetGame();
+
+// Leer tiempo guardado al cargar la página
+const storedTime = Number(localStorage.getItem("wintopayFinalTime"));
+if (storedTime > 0) updateCatalogLocks(storedTime);

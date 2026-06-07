@@ -201,3 +201,20 @@
     padding: 14px;
   }
 }
+
+@media (max-width: 900px) {
+  .product-gallery {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .product-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-gallery img {
+    scroll-snap-align: start;
+  }
+}

@@ -139,3 +139,58 @@
   color: #666;
   text-align: center;
 }
+
+.product-gallery {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.product-gallery img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Lock overlay ─────────────────────────────────────── */
+.lock-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.35s ease;
+}
+
+.lock-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.lock-label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.product-card.unlocked .lock-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-card:not(.unlocked) .product-add,
+.product-card:not(.unlocked) .size-btn {
+  pointer-events: none;
+}
