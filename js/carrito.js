@@ -114,7 +114,7 @@ document.querySelectorAll(".product-add").forEach(btn => {
     e.stopPropagation();
 
     const card = btn.closest(".product-card");
-    if (!card) return;
+    if (!card || !card.classList.contains("unlocked")) return;
 
     // Cerrar otras cards abiertas
     document.querySelectorAll(".product-card.show-sizes").forEach(c => {
@@ -133,7 +133,7 @@ document.querySelectorAll(".product-card .size-overlay .size-btn").forEach(btn =
     e.stopPropagation();
 
     const card = btn.closest(".product-card");
-    if (!card) return;
+    if (!card || !card.classList.contains("unlocked")) return;
 
     const title = card.querySelector(".product-body .product-title")?.textContent.trim() || "Producto";
     const price = parsePrice(card.querySelector(".price-current")?.textContent || "0");

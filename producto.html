@@ -41,7 +41,7 @@
 </aside>
 
 <!-- -------Layout--------- -->
-<div class="product-page">
+<div class="product-page product-locked">
 
   <header class="site-header">
     <div class="header-bar">
@@ -62,7 +62,7 @@
     </div>
   </header>
 
-  <main class="product-detail">
+  <main class="product-detail" data-product-detail>
 
     <!-- Galería con miniaturas -->
     <section class="product-detail-gallery">
@@ -87,6 +87,12 @@
       <p class="product-meta">Desbloqueado por rendimiento en el juego</p>
       <h1 class="product-title">Producto 1</h1>
 
+      <div class="product-lock-notice" id="productLockNotice" role="status">
+        <strong>Producto bloqueado</strong>
+        <span id="productLockMessage">Completa el buscaminas para desbloquearlo.</span>
+        <a href="index.html">Volver al juego</a>
+      </div>
+
       <div class="product-pricing">
         <span class="product-price-old">$15.990</span>
         <span class="product-price">$12.990</span>
@@ -103,7 +109,7 @@
       </div>
 
       <div class="product-actions">
-        <button class="btn btn-primary" type="button" id="addToCartBtn">Agregar al carro</button>
+        <button class="btn btn-primary" type="button" id="addToCartBtn" disabled>Agregar al carro</button>
         <a class="btn btn-secondary" href="index.html">Seguir jugando</a>
       </div>
 
@@ -121,9 +127,9 @@
     <div class="recommended-grid">
 
   <!-- Card 1 -->
-  <article class="product-card" data-threshold="21">
+  <article class="product-card" data-product-id="gorra-sito" data-threshold="300">
     <div class="product-media">
-      <a href="producto.html" class="product-link">
+      <a href="producto.html?id=gorra-sito" class="product-link">
         <div class="product-gallery">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 1 vista 1">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 1 vista 2">
@@ -148,15 +154,15 @@
       </div>
     </div>
     <div class="product-body">
-      <a href="producto.html" class="product-title">Producto 1</a>
+      <a href="producto.html?id=gorra-sito" class="product-title">Gorra Sito</a>
       <p class="product-note">Disponible al completar el reto.</p>
     </div>
   </article>
 
   <!-- Card 2 -->
-  <article class="product-card" data-threshold="21">
+  <article class="product-card" data-product-id="polera-xan" data-threshold="120">
     <div class="product-media">
-      <a href="producto.html" class="product-link">
+      <a href="producto.html?id=polera-xan" class="product-link">
         <div class="product-gallery">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 2 vista 1">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 2 vista 2">
@@ -182,15 +188,15 @@
       </div>
     </div>
     <div class="product-body">
-      <a href="producto.html" class="product-title">Producto 2</a>
+      <a href="producto.html?id=polera-xan" class="product-title">Polera Xan</a>
       <p class="product-note">Disponible al completar el reto.</p>
     </div>
   </article>
 
     <!-- Card 3 -->
-  <article class="product-card" data-threshold="21">
+  <article class="product-card" data-product-id="poleron-sito" data-threshold="60">
     <div class="product-media">
-      <a href="producto.html" class="product-link">
+      <a href="producto.html?id=poleron-sito" class="product-link">
         <div class="product-gallery">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 1 vista 1">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 1 vista 2">
@@ -215,15 +221,15 @@
       </div>
     </div>
     <div class="product-body">
-      <a href="producto.html" class="product-title">Producto 1</a>
+      <a href="producto.html?id=poleron-sito" class="product-title">Polerón Sito</a>
       <p class="product-note">Disponible al completar el reto.</p>
     </div>
   </article>
 
   <!-- Card 4 -->
-  <article class="product-card" data-threshold="21">
+  <article class="product-card" data-product-id="short-sito" data-threshold="25">
     <div class="product-media">
-      <a href="producto.html" class="product-link">
+      <a href="producto.html?id=short-sito" class="product-link">
         <div class="product-gallery">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 2 vista 1">
           <img src="assets/Imagenes/Gorra 1000x1080px.jpg" alt="Producto 2 vista 2">
@@ -249,7 +255,7 @@
       </div>
     </div>
     <div class="product-body">
-      <a href="producto.html" class="product-title">Producto 2</a>
+      <a href="producto.html?id=short-sito" class="product-title">Short Sito</a>
       <p class="product-note">Disponible al completar el reto.</p>
     </div>
   </article>

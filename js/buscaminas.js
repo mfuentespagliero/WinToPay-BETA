@@ -295,13 +295,12 @@ function endGame(isWin) {
   stopTimer();
 
   if (isWin) {
-    // Solo desbloquear si ganó en 20 segundos o menos
-    localStorage.setItem('wintopayFinalTime', seconds);
+    const previousBest = Number(localStorage.getItem('wintopayFinalTime'));
+    const bestTime = previousBest > 0 ? Math.min(previousBest, seconds) : seconds;
+    localStorage.setItem('wintopayFinalTime', bestTime);
     face.className = 'smiley cool';
-    statusText.textContent = seconds <= 20
-      ? '¡Reto completado! Productos desbloqueados.'
-      : 'Terminaste en ' + seconds + 's. Necesitas ≤20s para desbloquear.';
-    updateCatalogLocks(seconds);
+    statusText.textContent = `¡Reto completado en ${seconds}s! Mejor tiempo: ${bestTime}s.`;
+    updateCatalogLocks(bestTime);
   } else {
     revealAllMines();
     face.className = 'smiley dead';

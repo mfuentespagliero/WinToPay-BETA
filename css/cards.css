@@ -203,3 +203,12 @@
 .product-card:not(.unlocked) .size-btn {
   pointer-events: none;
 }
+
+.product-card.locked .product-link {
+  cursor: not-allowed;
+}
+
+.product-card.locked .product-add {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

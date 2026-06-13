@@ -382,3 +382,49 @@
   opacity: 0;
   pointer-events: none;
 }
+
+.product-lock-notice {
+  display: none;
+  padding: 16px;
+  border: 1px solid #111;
+  background: #fff5d8;
+  color: #111;
+  gap: 8px;
+}
+
+.product-lock-notice strong,
+.product-lock-notice span,
+.product-lock-notice a {
+  display: block;
+}
+
+.product-lock-notice a {
+  width: max-content;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.product-locked .product-lock-notice {
+  display: grid;
+}
+
+.product-locked .product-detail-gallery,
+.product-locked .product-pricing,
+.product-locked .product-sizes {
+  opacity: 0.45;
+}
+
+.product-locked .gallery-main img {
+  filter: grayscale(1);
+}
+
+.product-locked .thumb,
+.product-locked .product-sizes .size-btn,
+.product-locked #addToCartBtn {
+  cursor: not-allowed;
+}
+
+.product-locked #addToCartBtn {
+  opacity: 0.45;
+}
