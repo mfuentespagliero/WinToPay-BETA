@@ -688,72 +688,6 @@ body.cart-open .cart-overlay {
   color: #fff;
 }
 
-/* =========================================================
-   AGREGAR AL FINAL DE style.css — items del carrito
-========================================================= */
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.cart-item:last-child {
-  border-bottom: none;
-}
-
-.cart-item-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  min-width: 0;
-}
-
-.cart-item-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #111;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cart-item-qty {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.cart-item-price {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111;
-}
-
-.cart-item-remove {
-  flex-shrink: 0;
-  border: none;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
-  line-height: 1;
-}
-
-.cart-item-remove:hover {
-  color: #111;
-}
-
-/* =========================================================
-   AGREGAR AL FINAL DE style.css
-   — items del drawer, selector de talla, badge
-========================================================= */
-
-
 /* ── Items del drawer ─────────────────────────────────── */
 
 .cart-item {
@@ -873,13 +807,13 @@ body.cart-open .cart-overlay {
   flex-shrink: 0;
 }
 
-.size-options {
+.size-selector .size-options {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
 }
 
-.size-btn {
+.size-selector .size-btn {
   width: 36px;
   height: 36px;
   border: 1px solid #111;
@@ -893,7 +827,7 @@ body.cart-open .cart-overlay {
   transition: background 0.15s, color 0.15s;
 }
 
-.size-btn:hover {
+.size-selector .size-btn:hover {
   background: #111;
   color: #fff;
 }

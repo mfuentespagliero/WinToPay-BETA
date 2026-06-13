@@ -309,18 +309,5 @@ function endGame(isWin) {
   }
 }
 
-function updateCatalogLocks(finalTime) {
-  document.querySelectorAll(".product-card[data-threshold]").forEach((card) => {
-    const threshold = Number(card.dataset.threshold);
-    const unlocked  = finalTime <= 20 && finalTime < threshold;
-    card.classList.toggle("unlocked",  unlocked);
-    card.classList.toggle("locked",   !unlocked);
-  });
-}
-
 resetButton.addEventListener('click', resetGame);
 resetGame();
-
-// Leer tiempo guardado al cargar la página
-const storedTime = Number(localStorage.getItem("wintopayFinalTime"));
-if (storedTime > 0) updateCatalogLocks(storedTime);

@@ -153,44 +153,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// ── Página de detalle ─────────────────────────────────────
-
-const addFromDetail = document.querySelector(".product-actions .btn");
-if (addFromDetail) {
-  addFromDetail.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const title = document.querySelector(".product-info .product-title")?.textContent.trim();
-    const price = parsePrice(document.querySelector(".product-info .product-price")?.textContent || "0");
-    const image = document.querySelector(".product-gallery img")?.src || "";
-    if (!title) return;
-
-    const actions  = document.querySelector(".product-actions");
-    const existing = document.querySelector(".detail-size-selector");
-    if (existing) { existing.remove(); return; }
-
-    const selector = document.createElement("div");
-    selector.className = "size-selector detail-size-selector";
-    selector.innerHTML = `
-      <span class="size-label">Talla</span>
-      <div class="size-options">
-        ${["S","M","L","XL"].map(s =>
-          `<button type="button" class="size-btn" data-size="${s}">${s}</button>`
-        ).join("")}
-      </div>
-    `;
-
-    actions.insertAdjacentElement("afterend", selector);
-
-    selector.querySelectorAll(".size-btn").forEach(b => {
-      b.addEventListener("click", () => {
-        addItem(title, price, b.dataset.size, image);
-        selector.remove();
-      });
-    });
-  });
-}
-
 // ── Init ──────────────────────────────────────────────────
 
 renderCart();

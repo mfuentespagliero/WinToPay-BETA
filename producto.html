@@ -65,7 +65,7 @@
   <main class="product-detail">
 
     <!-- Galería con miniaturas -->
-    <section class="product-gallery">
+    <section class="product-detail-gallery">
       <div class="gallery-thumbs">
         <button class="thumb active" data-img="assets/Imagenes/Gorra sito.jpg">
           <img src="assets/Imagenes/Gorra sito.jpg" alt="Vista 1">
@@ -277,38 +277,8 @@
 <!-- ------Scripts----- -->
 <script src="js/ui.js"></script>
 <script src="js/carrito.js"></script>
-<script>
-  // Galería
-  document.querySelectorAll(".thumb").forEach(thumb => {
-    thumb.addEventListener("click", () => {
-      document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
-      thumb.classList.add("active");
-      document.getElementById("mainImage").src = thumb.dataset.img;
-    });
-  });
-
-  // Tallas
-  let selectedSize = null;
-
-  document.querySelectorAll(".product-sizes .size-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".product-sizes .size-btn").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      selectedSize = btn.dataset.size;
-    });
-  });
-
-  document.getElementById("addToCartBtn").addEventListener("click", () => {
-    if (!selectedSize) {
-      alert("Por favor elige una talla.");
-      return;
-    }
-    const title = document.querySelector(".product-info .product-title").textContent.trim();
-    const price = parseInt(document.querySelector(".product-info .product-price").textContent.replace(/\D/g, ""), 10);
-    const image = document.getElementById("mainImage").src;
-    addItem(title, price, selectedSize, image);
-  });
-</script>
+<script src="js/app.js"></script>
+<script src="js/producto.js"></script>
 <!-- ------End----- -->
 </body>
 </html>

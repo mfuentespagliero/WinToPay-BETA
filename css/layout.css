@@ -79,7 +79,7 @@
 }
 
 /* Galería con miniaturas */
-.product-gallery {
+.product-detail-gallery {
   display: grid;
   grid-template-columns: 80px 1fr;
   gap: 12px;
@@ -350,7 +350,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-.lock-overlay {
+.catalog-card .lock-overlay {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.68);
@@ -381,11 +381,4 @@
 .catalog-card.unlocked .lock-overlay {
   opacity: 0;
   pointer-events: none;
-}
-
-@media (max-width: 900px) {
-  .catalog-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
 }
