@@ -65,6 +65,48 @@
   }
 
   .product-gallery { -webkit-overflow-scrolling: touch; }
+
+  .mine-action-menu {
+    position: fixed;
+    z-index: 90;
+    display: flex;
+    gap: 8px;
+    padding: 5px;
+    border-radius: 999px;
+    background: rgba(20, 20, 28, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(6px);
+  }
+
+  .mine-action-menu button {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: var(--ms-mid);
+    color: var(--text-dark);
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .mine-action-menu .mine-action-flag {
+    color: #ff4f5e;
+  }
+
+  .mine-action-menu .mine-action-reveal {
+    color: #7c3cff;
+  }
+
+  .mine-action-menu button:active {
+    background: #7c3cff;
+    color: #ffffff;
+    transform: scale(0.92);
+  }
 }
 
 @media (max-width: 775px) {

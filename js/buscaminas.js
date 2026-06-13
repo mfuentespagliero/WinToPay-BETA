@@ -2,12 +2,10 @@
     const rows = 9;
     const cols = 9;
     const mineCount = 10;
-    const scorePerReveal = 10;
-    const winBonus = 100;
     const digitClasses = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
     const boardElement = document.getElementById('board');
-    const scoreDisplay = document.getElementById('scoreDisplay');
+    const mineDisplay = document.getElementById('mineDisplay');
     const timerDisplay = document.getElementById('timerDisplay');
     const resetButton = document.getElementById('resetButton');
     const statusText = document.getElementById('statusText');
@@ -17,9 +15,70 @@
     let started = false;
     let finished = false;
     let revealedSafeCells = 0;
-    let score = 0;
     let seconds = 0;
     let timerId = null;
+    let mobileActionMenu = null;
+    let selectedMobileCell = null;
+
+    function isMobileGame() {
+      return window.matchMedia('(max-width: 900px)').matches;
+    }
+
+    function closeMobileActionMenu() {
+      mobileActionMenu?.remove();
+      mobileActionMenu = null;
+      selectedMobileCell?.element?.classList.remove('action-selected');
+      selectedMobileCell = null;
+    }
+
+    function openMobileActionMenu(cell) {
+      closeMobileActionMenu();
+      if (cell.revealed || finished) return;
+
+      selectedMobileCell = cell;
+      cell.element.classList.add('action-selected');
+
+      const menu = document.createElement('div');
+      menu.className = 'mine-action-menu';
+      menu.setAttribute('role', 'menu');
+      menu.innerHTML = `
+        <button type="button" class="mine-action-flag" role="menuitem" aria-label="${cell.flagged ? 'Quitar bandera' : 'Poner bandera'}" title="${cell.flagged ? 'Quitar bandera' : 'Poner bandera'}">
+          <span aria-hidden="true">${cell.flagged ? '×' : '⚑'}</span>
+        </button>
+        <button type="button" class="mine-action-reveal" role="menuitem" aria-label="Cavar o abrir casilla" title="Cavar / Abrir">
+          <span aria-hidden="true">⛏</span>
+        </button>
+      `;
+
+      menu.querySelector('.mine-action-flag').addEventListener('click', (event) => {
+        event.stopPropagation();
+        handleFlag(cell.row, cell.col, true);
+        closeMobileActionMenu();
+      });
+
+      menu.querySelector('.mine-action-reveal').addEventListener('click', (event) => {
+        event.stopPropagation();
+        handleReveal(cell.row, cell.col);
+        closeMobileActionMenu();
+      });
+
+      document.body.appendChild(menu);
+      mobileActionMenu = menu;
+
+      const cellRect = cell.element.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+      const viewportPadding = 8;
+      let left = cellRect.left + cellRect.width / 2 - menuRect.width / 2;
+      let top = cellRect.bottom + 8;
+
+      left = Math.max(viewportPadding, Math.min(left, window.innerWidth - menuRect.width - viewportPadding));
+      if (top + menuRect.height > window.innerHeight - viewportPadding) {
+        top = cellRect.top - menuRect.height - 8;
+      }
+
+      menu.style.left = `${left}px`;
+      menu.style.top = `${Math.max(viewportPadding, top)}px`;
+    }
 
     function createEmptyBoard() {
       return Array.from({ length: rows }, (_, row) =>
@@ -36,12 +95,12 @@
     }
 
     function resetGame() {
+      closeMobileActionMenu();
       stopTimer();
       board = createEmptyBoard();
       started = false;
       finished = false;
       revealedSafeCells = 0;
-      score = 0;
       seconds = 0;
       statusText.textContent = '';
       face.className = 'smiley';
@@ -50,8 +109,13 @@
     }
 
     function renderDisplays() {
-      setDisplay(scoreDisplay, score);
+      updateMineDisplay();
       setDisplay(timerDisplay, seconds);
+    }
+
+    function updateMineDisplay() {
+      const flaggedCells = board.flat().filter((cell) => cell.flagged).length;
+      setDisplay(mineDisplay, Math.max(0, mineCount - flaggedCells));
     }
 
     function setDisplay(container, value) {
@@ -76,10 +140,17 @@
           cellElement.setAttribute('role', 'gridcell');
           cellElement.setAttribute('aria-label', `Fila ${row + 1}, columna ${col + 1}`);
 
-          cellElement.addEventListener('click', () => handleReveal(row, col));
+          cellElement.addEventListener('click', (event) => {
+            if (isMobileGame()) {
+              event.stopPropagation();
+              openMobileActionMenu(cell);
+              return;
+            }
+            handleReveal(row, col);
+          });
           cellElement.addEventListener('contextmenu', (event) => {
             event.preventDefault();
-            handleFlag(row, col);
+            if (!isMobileGame()) handleFlag(row, col);
           });
 
           cell.element = cellElement;
@@ -198,7 +269,6 @@
 
         cell.revealed = true;
         revealedSafeCells += 1;
-        score += scorePerReveal;
         drawCell(cell);
 
         if (cell.adjacent === 0) {
@@ -215,11 +285,10 @@
         }
       }
 
-      setDisplay(scoreDisplay, score);
     }
 
-    function handleFlag(row, col) {
-      if (finished || !started) {
+    function handleFlag(row, col, allowBeforeStart = false) {
+      if (finished || (!started && !allowBeforeStart)) {
         return;
       }
 
@@ -231,6 +300,7 @@
 
       cell.flagged = !cell.flagged;
       drawCell(cell);
+      updateMineDisplay();
     }
 
     function drawCell(cell) {
@@ -284,13 +354,12 @@
     function checkWin() {
       const totalSafeCells = rows * cols - mineCount;
       if (revealedSafeCells === totalSafeCells) {
-        score += winBonus;
-        setDisplay(scoreDisplay, score);
         endGame(true);
       }
     }
 
 function endGame(isWin) {
+  closeMobileActionMenu();
   finished = true;
   stopTimer();
 
@@ -309,4 +378,12 @@ function endGame(isWin) {
 }
 
 resetButton.addEventListener('click', resetGame);
+document.addEventListener('click', (event) => {
+  if (mobileActionMenu && !event.target.closest('.mine-action-menu')) {
+    closeMobileActionMenu();
+  }
+});
+window.addEventListener('resize', () => {
+  if (!isMobileGame()) closeMobileActionMenu();
+});
 resetGame();

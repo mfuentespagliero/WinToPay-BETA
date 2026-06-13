@@ -586,7 +586,6 @@ body.cart-open .cart-overlay {
   left: 10px; top: 6px;
   width: 3px; height: 20px;
   background: #000;
-  box-shadow: 3px 15px 0 0 #000;
 }
 
 .cell.mine.revealed .mine-shape,
@@ -1303,6 +1302,10 @@ body.cart-open .cart-overlay {
   gap: 0;
 }
 
+.mine-action-menu {
+  display: none;
+}
+
 /* =========================================================
    MODO NOCTURNO
 ========================================================= */
@@ -1402,7 +1405,6 @@ html[data-theme="dark"] .cell.mine.revealed .mine-cross {
 
 html[data-theme="dark"] .cell.flagged::after {
   background: #ffffff;
-  box-shadow: 3px 15px 0 0 #ffffff;
 }
 
 html[data-theme="dark"] .status {
