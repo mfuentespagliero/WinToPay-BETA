@@ -153,6 +153,7 @@ img {
   display: flex;
   align-items: center;
   justify-self: end;
+  gap: 12px;
 }
 
 .cart-toggle {
@@ -163,6 +164,24 @@ img {
   line-height: 1;
   cursor: pointer;
   padding: 0;
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 
@@ -1282,4 +1301,165 @@ body.cart-open .cart-overlay {
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+
+/* =========================================================
+   MODO NOCTURNO
+========================================================= */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0b10;
+  --surface: #17171f;
+  --text-dark: #f2f2f5;
+  --ms-light: #565666;
+  --ms-mid: #292934;
+  --ms-dark: #101016;
+  --ms-deep: #050508;
+  --blue: #64a2ff;
+  --green: #56d478;
+  --red: #ff6262;
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .checkout-body {
+  background: var(--bg);
+  color: var(--text-dark);
+}
+
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .checkout-header {
+  background: #07070a;
+  border-bottom-color: rgba(151, 91, 255, 0.35);
+}
+
+html[data-theme="dark"] .side-menu,
+html[data-theme="dark"] .cart-drawer,
+html[data-theme="dark"] .tutorial-panel {
+  background: #17171f;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .menu-close,
+html[data-theme="dark"] .cart-close,
+html[data-theme="dark"] .tutorial-close,
+html[data-theme="dark"] .side-menu-nav a,
+html[data-theme="dark"] .side-menu-bottom a {
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .side-menu-bottom,
+html[data-theme="dark"] .cart-top,
+html[data-theme="dark"] .cart-bottom {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .cart-empty,
+html[data-theme="dark"] .cart-item-size,
+html[data-theme="dark"] .cart-item-qty {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+html[data-theme="dark"] .cart-item-title,
+html[data-theme="dark"] .cart-item-price,
+html[data-theme="dark"] .cart-item-remove {
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .cart-item-img,
+html[data-theme="dark"] .summary-thumb-wrap {
+  background: #24242e;
+}
+
+html[data-theme="dark"] .cart-checkout,
+html[data-theme="dark"] .checkout-submit,
+html[data-theme="dark"] .checkout-shoppay-btn {
+  background: #7c3cff;
+  border-color: #7c3cff;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .board,
+html[data-theme="dark"] .tutorial-board {
+  box-shadow: 0 0 24px rgba(124, 60, 255, 0.2);
+}
+
+html[data-theme="dark"] .cell.revealed,
+html[data-theme="dark"] .tutorial-cell.revealed {
+  background: #20202a;
+  border-color: #454552;
+}
+
+html[data-theme="dark"] .cell.n7,
+html[data-theme="dark"] .cell.mine.revealed .mine-shape,
+html[data-theme="dark"] .cell.mine.revealed .mine-shape::before,
+html[data-theme="dark"] .cell.mine.revealed .mine-shape::after,
+html[data-theme="dark"] .cell.mine.revealed .mine-cross {
+  color: #ffffff;
+  background-color: #ffffff;
+}
+
+html[data-theme="dark"] .cell.flagged::after {
+  background: #ffffff;
+  box-shadow: 3px 15px 0 0 #ffffff;
+}
+
+html[data-theme="dark"] .status {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html[data-theme="dark"] .btn,
+html[data-theme="dark"] .size-selector,
+html[data-theme="dark"] .size-selector .size-btn {
+  border-color: #d8d8df;
+  background: #17171f;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .btn:hover,
+html[data-theme="dark"] .size-selector .size-btn:hover {
+  background: #f2f2f5;
+  color: #111111;
+}
+
+html[data-theme="dark"] .checkout-summary {
+  background: #121219;
+  border-color: #30303b;
+}
+
+html[data-theme="dark"] .checkout-block,
+html[data-theme="dark"] .summary-row-total {
+  border-color: #30303b;
+}
+
+html[data-theme="dark"] .form-group label,
+html[data-theme="dark"] .checkout-kicker,
+html[data-theme="dark"] .checkout-helper,
+html[data-theme="dark"] .option-copy small,
+html[data-theme="dark"] .summary-copy span {
+  color: #aaaab5;
+}
+
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group select,
+html[data-theme="dark"] .summary-discount input,
+html[data-theme="dark"] .option-card,
+html[data-theme="dark"] .payment-panel,
+html[data-theme="dark"] .summary-note,
+html[data-theme="dark"] .summary-discount button,
+html[data-theme="dark"] .payment-brands span {
+  border-color: #3b3b47;
+  background: #1c1c25;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .summary-note p,
+html[data-theme="dark"] .check-row,
+html[data-theme="dark"] .checkout-back {
+  color: #d0d0d8;
+}
+
+html[data-theme="dark"] ::placeholder {
+  color: #858591;
 }

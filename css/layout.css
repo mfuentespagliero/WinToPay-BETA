@@ -692,6 +692,102 @@ body.tutorial-open .tutorial-panel {
   pointer-events: none;
 }
 
+html[data-theme="dark"] .game-section,
+html[data-theme="dark"] .products-section,
+html[data-theme="dark"] .gallery-main {
+  background: var(--bg);
+}
+
+html[data-theme="dark"] .tutorial-toggle {
+  border-color: #101016;
+  border-top-color: #565666;
+  border-left-color: #565666;
+  background: #292934;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .tutorial-head,
+html[data-theme="dark"] .tutorial-practice {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .tutorial-kicker,
+html[data-theme="dark"] .tutorial-steps p,
+html[data-theme="dark"] .tutorial-practice > p {
+  color: #aaaab5;
+}
+
+html[data-theme="dark"] .tutorial-steps li {
+  background: #20202a;
+  border-color: #3b3b47;
+}
+
+html[data-theme="dark"] .tutorial-steps li.active {
+  border-color: #9c6cff;
+}
+
+html[data-theme="dark"] .tutorial-choices button,
+html[data-theme="dark"] .tutorial-choice-grid button,
+html[data-theme="dark"] .tutorial-reset {
+  border-color: #101016;
+  border-top-color: #565666;
+  border-left-color: #565666;
+  background: #292934;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .product-info .product-meta,
+html[data-theme="dark"] .product-description,
+html[data-theme="dark"] .product-meta {
+  color: #aaaab5;
+}
+
+html[data-theme="dark"] .thumb,
+html[data-theme="dark"] .catalog-card,
+html[data-theme="dark"] .catalog-visual {
+  background: #17171f;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .catalog-info p,
+html[data-theme="dark"] .lock-message span {
+  color: #aaaab5;
+}
+
+html[data-theme="dark"] .catalog-card .lock-overlay {
+  background: rgba(11, 11, 16, 0.8);
+}
+
+html[data-theme="dark"] .product-sizes .size-btn {
+  border-color: #4b4b58;
+  background: #17171f;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .product-sizes .size-btn.selected,
+html[data-theme="dark"] .btn-primary {
+  background: #7c3cff;
+  border-color: #7c3cff;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .product-lock-notice {
+  border-color: #9c6cff;
+  background: #251b3b;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .products-footer {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .footer-brand,
+html[data-theme="dark"] .footer-links a,
+html[data-theme="dark"] .footer-copy,
+html[data-theme="dark"] .footer-copy a {
+  color: #d8d8df;
+}
+
 .product-lock-notice {
   display: none;
   padding: 16px;

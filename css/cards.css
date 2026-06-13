@@ -212,3 +212,35 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .product-title {
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .product-media {
+  background: #17171f;
+}
+
+html[data-theme="dark"] .product-note {
+  color: #aaaab5;
+}
+
+html[data-theme="dark"] .product-price-badge {
+  background: rgba(23, 23, 31, 0.92);
+}
+
+html[data-theme="dark"] .product-add,
+html[data-theme="dark"] .size-btn {
+  border-color: #d8d8df;
+  background: #17171f;
+  color: #f2f2f5;
+}
+
+html[data-theme="dark"] .size-overlay {
+  background: rgba(11, 11, 16, 0.82);
+}
+
+html[data-theme="dark"] .lock-overlay {
+  background: rgba(4, 4, 8, 0.72);
+}
