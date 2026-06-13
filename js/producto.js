@@ -1,50 +1,50 @@
 const PRODUCTS = {
-  "gorra-sito": {
-    title: "Gorra Sito",
+  "calcetines": {
+    title: "Calcetines WinToPay",
     threshold: 300,
     oldPrice: "$24.990",
     price: "$18.990",
-    images: ["assets/Imagenes/Gorra 1000x1080px.jpg", "assets/Imagenes/Gorra sito.jpg"],
+    images: ["assets/Items Wintopay v1/calcetines1.jpg", "assets/Items Wintopay v1/calcetines2.jpg"],
   },
-  "polera-xan": {
-    title: "Polera Xan",
+  "celular": {
+    title: "Carcasa WinToPay",
     threshold: 120,
     oldPrice: "$24.990",
     price: "$18.990",
-    images: ["assets/Imagenes/polera xan 1.jpg", "assets/Imagenes/polera xan 2.jpg"],
+    images: ["assets/Items Wintopay v1/Celu1.jpg", "assets/Items Wintopay v1/celu2.jpg"],
   },
-  "poleron-sito": {
-    title: "Polerón Sito",
+  "gorra": {
+    title: "Gorra WinToPay",
     threshold: 60,
     oldPrice: "$39.990",
     price: "$29.990",
-    images: ["assets/Imagenes/poleron sito 1.jpg", "assets/Imagenes/poleron xan 1.jpg"],
+    images: ["assets/Items Wintopay v1/gorra1.jpg", "assets/Items Wintopay v1/gorra2.jpg"],
   },
-  "poleron-xan": {
-    title: "Polerón Xan",
+  "polera": {
+    title: "Polera WinToPay",
     threshold: 30,
     oldPrice: "$42.990",
     price: "$31.990",
-    images: ["assets/Imagenes/poleron xan 1.jpg", "assets/Imagenes/poleron sito 1.jpg"],
+    images: ["assets/Items Wintopay v1/polera1.jpg", "assets/Items Wintopay v1/polera2.jpg"],
   },
-  "short-sito": {
-    title: "Short Sito",
+  "poleron": {
+    title: "Polerón WinToPay",
     threshold: 25,
     oldPrice: "$29.990",
     price: "$21.990",
-    images: ["assets/Imagenes/short sito.jpg", "assets/Imagenes/polera xan 2.jpg"],
+    images: ["assets/Items Wintopay v1/poleron1.jpg", "assets/Items Wintopay v1/poleron2.jpg"],
   },
-  "gorra-elite": {
-    title: "Gorra Elite",
+  "taza": {
+    title: "Taza WinToPay",
     threshold: 20,
     oldPrice: "$34.990",
     price: "$24.990",
-    images: ["assets/Imagenes/Gorra sito.jpg", "assets/Imagenes/Gorra 1000x1080px.jpg"],
+    images: ["assets/Items Wintopay v1/taza1.jpg", "assets/Items Wintopay v1/taza2.jpg"],
   },
 };
 
-const productId = new URLSearchParams(window.location.search).get("id") || "gorra-sito";
-const product = PRODUCTS[productId] || PRODUCTS["gorra-sito"];
+const productId = new URLSearchParams(window.location.search).get("id") || "calcetines";
+const product = PRODUCTS[productId] || PRODUCTS["calcetines"];
 const bestTime = Number(localStorage.getItem("wintopayFinalTime"));
 const isUnlocked = bestTime > 0 && bestTime <= product.threshold;
 const productPage = document.querySelector(".product-page");
