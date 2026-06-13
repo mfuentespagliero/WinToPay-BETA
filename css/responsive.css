@@ -169,6 +169,24 @@
 
   .payment-brands { justify-content: flex-start; }
   .payment-panel { padding: 14px; }
+
+  .tutorial-panel {
+    padding: 18px;
+  }
+
+  .tutorial-steps li {
+    grid-template-columns: 34px 1fr;
+    padding: 12px;
+  }
+
+  .tutorial-step-number {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tutorial-board {
+    --tutorial-cell: min(42px, 14vw);
+  }
 }
 
 @media (max-width: 640px) {

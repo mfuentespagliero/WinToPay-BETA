@@ -7,6 +7,16 @@ const menuOverlay = document.querySelector(".menu-overlay");
 const cartToggle = document.querySelector(".cart-toggle");
 const cartClose = document.querySelector(".cart-close");
 const cartOverlay = document.querySelector(".cart-overlay");
+const tutorialToggle = document.getElementById("tutorialToggle");
+const tutorialClose = document.getElementById("tutorialClose");
+const tutorialOverlay = document.getElementById("tutorialOverlay");
+const tutorialPanel = document.getElementById("tutorialPanel");
+
+function closeTutorial() {
+  body.classList.remove("tutorial-open");
+  tutorialToggle?.setAttribute("aria-expanded", "false");
+  tutorialPanel?.setAttribute("aria-hidden", "true");
+}
 
 menuToggle?.addEventListener("click", () => {
   body.classList.add("menu-open");
@@ -34,9 +44,20 @@ cartOverlay?.addEventListener("click", () => {
   body.classList.remove("cart-open");
 });
 
+tutorialToggle?.addEventListener("click", () => {
+  body.classList.add("tutorial-open");
+  body.classList.remove("menu-open", "cart-open");
+  tutorialToggle.setAttribute("aria-expanded", "true");
+  tutorialPanel?.setAttribute("aria-hidden", "false");
+});
+
+tutorialClose?.addEventListener("click", closeTutorial);
+tutorialOverlay?.addEventListener("click", closeTutorial);
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     body.classList.remove("menu-open");
     body.classList.remove("cart-open");
+    closeTutorial();
   }
 });
