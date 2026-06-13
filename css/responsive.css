@@ -64,16 +64,7 @@
     gap: 12px;
   }
 
-  .product-gallery {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    transition: none;
-  }
-
-  .product-gallery::-webkit-scrollbar { display: none; }
-  .product-gallery img { scroll-snap-align: start; }
+  .product-gallery { -webkit-overflow-scrolling: touch; }
 }
 
 @media (max-width: 775px) {

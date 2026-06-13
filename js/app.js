@@ -9,21 +9,22 @@ function initGalleries() {
     const media = gallery.closest(".product-media");
     if (images.length <= 1 || !media) return;
 
-    function goTo(index) {
-      gallery.style.transform = `translateX(-${index * 100}%)`;
+    function goTo(index, behavior = "smooth") {
+      gallery.scrollTo({
+        left: index * gallery.clientWidth,
+        behavior,
+      });
     }
 
     media.addEventListener("mouseenter", () => {
-      if (window.innerWidth > 900) goTo(1);
+      if (window.innerWidth > 900) goTo(1, "instant");
     });
 
     media.addEventListener("mouseleave", () => {
-      if (window.innerWidth > 900) goTo(0);
+      if (window.innerWidth > 900) goTo(0, "instant");
     });
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth <= 900) gallery.style.transform = "";
-    });
+    window.addEventListener("resize", () => gallery.scrollTo({ left: 0 }));
   });
 }
 
