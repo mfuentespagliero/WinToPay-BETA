@@ -1338,7 +1338,8 @@ html[data-theme="dark"] .checkout-header {
 
 html[data-theme="dark"] .side-menu,
 html[data-theme="dark"] .cart-drawer,
-html[data-theme="dark"] .tutorial-panel {
+html[data-theme="dark"] .tutorial-panel,
+html[data-theme="dark"] .customizer-panel {
   background: #17171f;
   color: #f2f2f5;
 }
@@ -1346,6 +1347,7 @@ html[data-theme="dark"] .tutorial-panel {
 html[data-theme="dark"] .menu-close,
 html[data-theme="dark"] .cart-close,
 html[data-theme="dark"] .tutorial-close,
+html[data-theme="dark"] .customizer-close,
 html[data-theme="dark"] .side-menu-nav a,
 html[data-theme="dark"] .side-menu-bottom a {
   color: #f2f2f5;

@@ -126,6 +126,71 @@
     <p class="tutorial-practice-status" id="tutorialPracticeStatus" aria-live="polite">Completa los 3 pasos para comenzar.</p>
   </section>
 </aside>
+<div class="customizer-overlay" id="customizerOverlay"></div>
+<aside class="customizer-panel" id="customizerPanel" aria-labelledby="customizerTitle" aria-hidden="true">
+  <div class="customizer-head">
+    <div>
+      <p class="customizer-kicker">Personalizacion</p>
+      <h2 id="customizerTitle">Estilo del buscaminas</h2>
+    </div>
+    <button class="customizer-close" id="customizerClose" type="button" aria-label="Cerrar personalizacion">&times;</button>
+  </div>
+
+  <div class="customizer-preview" aria-label="Previsualizacion del estilo">
+    <div class="preview-minesweeper">
+      <div class="preview-panel">
+        <div class="preview-display">010</div>
+        <div class="preview-face" id="customizerPreviewFace">
+          <span class="eye left"></span>
+          <span class="eye right"></span>
+          <span class="mouth"></span>
+        </div>
+        <div class="preview-display">042</div>
+      </div>
+      <div class="preview-board" id="customizerPreviewBoard" aria-hidden="true">
+        <span class="preview-cell revealed n1">1</span>
+        <span class="preview-cell hidden"></span>
+        <span class="preview-cell revealed n2">2</span>
+        <span class="preview-cell hidden mine-preview">
+          <span class="mine-shape"></span>
+          <span class="mine-cross"></span>
+        </span>
+        <span class="preview-cell revealed"></span>
+        <span class="preview-cell hidden"></span>
+        <span class="preview-cell hidden flagged"></span>
+        <span class="preview-cell revealed n1">1</span>
+        <span class="preview-cell hidden mine-preview">
+          <span class="mine-shape"></span>
+          <span class="mine-cross"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="customizer-groups" aria-label="Opciones visuales del buscaminas">
+    <section class="customizer-group" aria-labelledby="customizerFacesTitle">
+      <div>
+        <h3 id="customizerFacesTitle">Rostro superior</h3>
+      </div>
+      <div class="customizer-options" data-customizer-target="face">
+        <button type="button" class="customizer-option active" data-option="classic" aria-pressed="true">Existente</button>
+        <button type="button" class="customizer-option" data-option="alien" aria-pressed="false">Marciano</button>
+        <button type="button" class="customizer-option" data-option="dog" aria-pressed="false">Perro</button>
+      </div>
+    </section>
+
+    <section class="customizer-group" aria-labelledby="customizerMinesTitle">
+      <div>
+        <h3 id="customizerMinesTitle">Minas</h3>
+      </div>
+      <div class="customizer-options" data-customizer-target="mine">
+        <button type="button" class="customizer-option active" data-option="classic" aria-pressed="true">Existente</button>
+        <button type="button" class="customizer-option" data-option="cow" aria-pressed="false">Vaca</button>
+        <button type="button" class="customizer-option" data-option="poop" aria-pressed="false">Pop&oacute;</button>
+      </div>
+    </section>
+  </div>
+</aside>
 <!-- -------Layout--------- -->
   <div class="page-layout">
     <header class="site-header">
@@ -154,8 +219,9 @@
     </header>
 
     <section class="game-section">
-      <div>
-        <div class="minesweeper" aria-label="Juego principal">
+      <div class="game-wrap">
+        <div class="game-shell">
+          <div class="minesweeper" aria-label="Juego principal">
           <div class="panel">
             <div class="display" id="mineDisplay" aria-label="Minas restantes">
               <div class="digit zero"><span class="seg a"></span><span class="seg b"></span><span class="seg c"></span><span class="seg d"></span><span class="seg e"></span><span class="seg f"></span><span class="seg g"></span></div>
@@ -180,10 +246,28 @@
           </div>
 
           <div class="board" id="board" role="grid" aria-label="Buscaminas"></div>
+          </div>
+
+          <div class="game-floating-actions" aria-label="Acciones del buscaminas">
+            <button class="game-tool-button game-customize-toggle" id="customizerToggle" type="button" aria-label="Personalizar buscaminas" aria-controls="customizerPanel" aria-expanded="false" title="Personalizar buscaminas">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.4 2.6 21.4 5.6 10.7 16.3 7.7 13.3 18.4 2.6Z"></path>
+                <path d="M7.7 13.3c-1.8.2-3.1 1.2-3.7 2.7-.4 1-.3 2.2-.9 3.1 1.3.2 2.8-.1 3.8-.8 1.3-.9 2-2.2 2.1-3.7"></path>
+                <path d="M14.8 6.2 17.8 9.2"></path>
+              </svg>
+            </button>
+
+            <button class="game-tool-button game-tutorial-toggle" id="tutorialToggle" type="button" aria-label="Abrir tutorial del buscaminas" aria-controls="tutorialPanel" aria-expanded="false" title="Tutorial">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 18h6"></path>
+                <path d="M10 22h4"></path>
+                <path d="M8.4 15.5c-1.6-1.1-2.7-2.9-2.7-5A6.3 6.3 0 0 1 12 4.2a6.3 6.3 0 0 1 6.3 6.3c0 2.1-1 3.9-2.7 5-.7.5-1.1 1.2-1.1 2H9.5c0-.8-.4-1.5-1.1-2Z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div class="status" id="statusText" aria-live="polite"></div>
-        <button class="tutorial-toggle" id="tutorialToggle" type="button" aria-controls="tutorialPanel" aria-expanded="false">Tutorial</button>
       </div>
     </section>
 
@@ -347,6 +431,7 @@
 <!-- ------Scripts----- -->
 <script src="js/theme.js"></script>
 <script src="js/ui.js"></script>
+<script src="js/customizer.js"></script>
 <script src="js/tutorial.js"></script>
 <script src="js/carrito.js"></script>
 <script src="js/app.js"></script>

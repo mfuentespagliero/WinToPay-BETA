@@ -37,24 +37,73 @@
   max-width: 100%;
 }
 
-.tutorial-toggle {
-  display: block;
-  margin: 16px auto 0;
-  min-width: 140px;
-  padding: 11px 20px;
+.game-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.game-shell {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  padding-bottom: 58px;
+}
+
+.game-floating-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.game-tool-button {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
   border: 2px solid #808080;
   border-top-color: #ffffff;
   border-left-color: #ffffff;
   background: var(--ms-mid);
   color: #111111;
-  font-weight: 700;
   cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
-.tutorial-toggle:active {
+.game-tool-button svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.game-tool-button:hover {
+  background: #d8d8d8;
+}
+
+.game-tool-button:active {
   border-color: #ffffff;
   border-top-color: #808080;
   border-left-color: #808080;
+  transform: translateY(1px);
+}
+
+.game-customize-toggle {
+  justify-self: start;
+}
+
+.game-tutorial-toggle {
+  justify-self: end;
 }
 
 .tutorial-overlay {
@@ -344,6 +393,399 @@ body.tutorial-open .tutorial-panel {
 .tutorial-practice-status {
   min-height: 22px;
   font-weight: 700;
+}
+
+.customizer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.customizer-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 70;
+  width: min(92vw, 620px);
+  max-height: min(88vh, 760px);
+  overflow-y: auto;
+  padding: 24px;
+  background: #ffffff;
+  color: #111111;
+  border: 4px solid var(--ms-mid);
+  box-shadow:
+    inset 2px 2px 0 #ffffff,
+    inset -2px -2px 0 #808080,
+    0 20px 60px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -46%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+body.customizer-open .customizer-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.customizer-open .customizer-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.customizer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.customizer-kicker {
+  margin: 0 0 5px;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.customizer-head h2 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.customizer-close {
+  border: 0;
+  background: transparent;
+  color: #111111;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.customizer-preview {
+  margin: 18px 0;
+  display: grid;
+  place-items: center;
+}
+
+.preview-minesweeper {
+  width: max-content;
+  padding: 10px;
+  background: var(--ms-mid);
+  border-top: 5px solid var(--ms-light);
+  border-left: 5px solid var(--ms-light);
+  border-right: 5px solid var(--ms-dark);
+  border-bottom: 5px solid var(--ms-dark);
+}
+
+.preview-panel {
+  display: grid;
+  grid-template-columns: 68px 46px 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: var(--ms-mid);
+  border-top: 4px solid var(--ms-dark);
+  border-left: 4px solid var(--ms-dark);
+  border-right: 4px solid var(--ms-light);
+  border-bottom: 4px solid var(--ms-light);
+}
+
+.preview-display {
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+  background: #000000;
+  color: var(--digit-red);
+  font-family: "Courier New", monospace;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.preview-face {
+  width: 38px;
+  height: 38px;
+  position: relative;
+  justify-self: center;
+  border: 2px solid var(--ms-dark);
+  border-top-color: var(--ms-light);
+  border-left-color: var(--ms-light);
+  background: #ffd93b;
+}
+
+.preview-face .eye {
+  position: absolute;
+  top: 11px;
+  width: 4px;
+  height: 4px;
+  background: #000000;
+}
+
+.preview-face .eye.left { left: 9px; }
+.preview-face .eye.right { right: 9px; }
+
+.preview-face .mouth {
+  position: absolute;
+  left: 11px;
+  bottom: 8px;
+  width: 14px;
+  height: 7px;
+  border-bottom: 2px solid #000000;
+  border-radius: 0 0 14px 14px;
+}
+
+.preview-board {
+  display: grid;
+  grid-template-columns: repeat(3, 42px);
+  grid-auto-rows: 42px;
+  background: var(--ms-mid);
+  border-top: 5px solid var(--ms-dark);
+  border-left: 5px solid var(--ms-dark);
+  border-right: 5px solid var(--ms-light);
+  border-bottom: 5px solid var(--ms-light);
+}
+
+.preview-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.preview-cell.hidden {
+  background: var(--ms-mid);
+  border-top: 4px solid var(--ms-light);
+  border-left: 4px solid var(--ms-light);
+  border-right: 4px solid var(--ms-dark);
+  border-bottom: 4px solid var(--ms-dark);
+}
+
+.preview-cell.revealed {
+  background: #bdbdbd;
+  border: 1px solid #8d8d8d;
+}
+
+.preview-cell.flagged::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 7px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 14px solid #d00000;
+}
+
+.preview-cell.flagged::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  width: 3px;
+  height: 20px;
+  background: #000000;
+}
+
+.preview-cell .mine-shape,
+.preview-cell .mine-shape::before,
+.preview-cell .mine-shape::after {
+  position: absolute;
+  content: "";
+  background: #000000;
+}
+
+.preview-cell .mine-shape {
+  width: 2px;
+  height: 22px;
+}
+
+.preview-cell .mine-shape::before {
+  width: 22px;
+  height: 2px;
+  left: -10px;
+  top: 10px;
+}
+
+.preview-cell .mine-shape::after {
+  width: 2px;
+  height: 22px;
+  transform: rotate(45deg);
+  top: 0;
+  left: 0;
+}
+
+.preview-cell .mine-cross {
+  position: absolute;
+  width: 2px;
+  height: 22px;
+  background: #000000;
+  transform: rotate(-45deg);
+}
+
+.preview-cell.n1 { color: var(--blue); }
+.preview-cell.n2 { color: var(--green); }
+
+body[data-face-skin="alien"] .smiley,
+body[data-face-skin="alien"] .preview-face {
+  background: #72e66f;
+  border-radius: 50%;
+}
+
+body[data-face-skin="dog"] .smiley,
+body[data-face-skin="dog"] .preview-face {
+  background: #d69a52;
+  border-radius: 44% 44% 50% 50%;
+}
+
+body[data-face-skin="alien"] .smiley > *,
+body[data-face-skin="dog"] .smiley > *,
+body[data-face-skin="alien"] .preview-face > *,
+body[data-face-skin="dog"] .preview-face > * {
+  display: none;
+}
+
+body[data-face-skin="alien"] .smiley::before,
+body[data-face-skin="dog"] .smiley::before,
+body[data-face-skin="alien"] .preview-face::before,
+body[data-face-skin="dog"] .preview-face::before {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  display: grid;
+  place-items: center;
+  color: #000000;
+  background: transparent;
+  border-radius: 0;
+  transform: none;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+}
+
+body[data-face-skin="alien"] .smiley::after,
+body[data-face-skin="dog"] .smiley::after,
+body[data-face-skin="alien"] .preview-face::after,
+body[data-face-skin="dog"] .preview-face::after {
+  display: none;
+  content: none;
+}
+
+body[data-face-skin="alien"] .smiley::before,
+body[data-face-skin="alien"] .preview-face::before {
+  content: "\1F47D";
+}
+
+body[data-face-skin="dog"] .smiley::before,
+body[data-face-skin="dog"] .preview-face::before {
+  content: "\1F436";
+}
+
+body[data-mine-skin="cow"] .cell.mine.revealed .mine-shape,
+body[data-mine-skin="cow"] .cell.mine.revealed .mine-shape::before,
+body[data-mine-skin="cow"] .cell.mine.revealed .mine-shape::after,
+body[data-mine-skin="cow"] .cell.mine.revealed .mine-cross,
+body[data-mine-skin="poop"] .cell.mine.revealed .mine-shape,
+body[data-mine-skin="poop"] .cell.mine.revealed .mine-shape::before,
+body[data-mine-skin="poop"] .cell.mine.revealed .mine-shape::after,
+body[data-mine-skin="poop"] .cell.mine.revealed .mine-cross,
+body[data-mine-skin="cow"] .preview-cell .mine-shape,
+body[data-mine-skin="cow"] .preview-cell .mine-shape::before,
+body[data-mine-skin="cow"] .preview-cell .mine-shape::after,
+body[data-mine-skin="cow"] .preview-cell .mine-cross,
+body[data-mine-skin="poop"] .preview-cell .mine-shape,
+body[data-mine-skin="poop"] .preview-cell .mine-shape::before,
+body[data-mine-skin="poop"] .preview-cell .mine-shape::after,
+body[data-mine-skin="poop"] .preview-cell .mine-cross {
+  display: none;
+}
+
+body[data-mine-skin="cow"] .cell.mine.revealed::before,
+body[data-mine-skin="poop"] .cell.mine.revealed::before,
+body[data-mine-skin="cow"] .preview-cell.mine-preview::before,
+body[data-mine-skin="poop"] .preview-cell.mine-preview::before {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+body[data-mine-skin="cow"] .cell.mine.revealed::before,
+body[data-mine-skin="cow"] .preview-cell.mine-preview::before {
+  content: "\1F42E";
+}
+
+body[data-mine-skin="poop"] .cell.mine.revealed::before,
+body[data-mine-skin="poop"] .preview-cell.mine-preview::before {
+  content: "\1F4A9";
+}
+
+.customizer-groups {
+  display: grid;
+  gap: 14px;
+}
+
+.customizer-group {
+  display: grid;
+  gap: 12px;
+  padding: 15px;
+  background: #f3f3f3;
+  border: 1px solid #d2d2d2;
+}
+
+.customizer-group h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.customizer-group p {
+  margin: 0;
+  color: #444444;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.customizer-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.customizer-option {
+  border: 2px solid #808080;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  background: var(--ms-mid);
+  color: #111111;
+  cursor: pointer;
+}
+
+.customizer-option {
+  min-height: 36px;
+  padding: 0 12px;
+  font-weight: 700;
+}
+
+.customizer-option.active {
+  border-color: #111111;
+  box-shadow: 0 0 0 2px #111111;
 }
 
 .products-section {
@@ -698,7 +1140,8 @@ html[data-theme="dark"] .gallery-main {
   background: var(--bg);
 }
 
-html[data-theme="dark"] .tutorial-toggle {
+html[data-theme="dark"] .game-tool-button,
+html[data-theme="dark"] .customizer-option {
   border-color: #101016;
   border-top-color: #565666;
   border-left-color: #565666;
@@ -707,17 +1150,22 @@ html[data-theme="dark"] .tutorial-toggle {
 }
 
 html[data-theme="dark"] .tutorial-head,
-html[data-theme="dark"] .tutorial-practice {
+html[data-theme="dark"] .tutorial-practice,
+html[data-theme="dark"] .customizer-head,
+html[data-theme="dark"] .customizer-group {
   border-color: rgba(255, 255, 255, 0.14);
 }
 
 html[data-theme="dark"] .tutorial-kicker,
 html[data-theme="dark"] .tutorial-steps p,
-html[data-theme="dark"] .tutorial-practice > p {
+html[data-theme="dark"] .tutorial-practice > p,
+html[data-theme="dark"] .customizer-kicker,
+html[data-theme="dark"] .customizer-group p {
   color: #aaaab5;
 }
 
-html[data-theme="dark"] .tutorial-steps li {
+html[data-theme="dark"] .tutorial-steps li,
+html[data-theme="dark"] .customizer-group {
   background: #20202a;
   border-color: #3b3b47;
 }
@@ -734,6 +1182,15 @@ html[data-theme="dark"] .tutorial-reset {
   border-left-color: #565666;
   background: #292934;
   color: #f2f2f5;
+}
+
+html[data-theme="dark"] .game-tool-button:hover {
+  background: #343442;
+}
+
+html[data-theme="dark"] .customizer-option.active {
+  border-color: #f2f2f5;
+  box-shadow: 0 0 0 2px #f2f2f5;
 }
 
 html[data-theme="dark"] .product-info .product-meta,

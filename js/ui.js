@@ -46,9 +46,11 @@ cartOverlay?.addEventListener("click", () => {
 
 tutorialToggle?.addEventListener("click", () => {
   body.classList.add("tutorial-open");
-  body.classList.remove("menu-open", "cart-open");
+  body.classList.remove("menu-open", "cart-open", "customizer-open");
   tutorialToggle.setAttribute("aria-expanded", "true");
   tutorialPanel?.setAttribute("aria-hidden", "false");
+  document.getElementById("customizerToggle")?.setAttribute("aria-expanded", "false");
+  document.getElementById("customizerPanel")?.setAttribute("aria-hidden", "true");
 });
 
 tutorialClose?.addEventListener("click", closeTutorial);
@@ -58,6 +60,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     body.classList.remove("menu-open");
     body.classList.remove("cart-open");
+    body.classList.remove("customizer-open");
     closeTutorial();
   }
 });

@@ -8,11 +8,21 @@
 }
 
 @media (max-width: 1280px) {
-  .minesweeper { transform: scale(0.96); }
+  .game-shell {
+    transform: scale(0.96);
+    transform-origin: center;
+  }
+
+  .minesweeper { transform: none; }
 }
 
 @media (max-width: 1100px) {
-  .minesweeper { transform: scale(0.92); }
+  .game-shell {
+    transform: scale(0.92);
+    transform-origin: center;
+  }
+
+  .minesweeper { transform: none; }
   .products-grid,
   .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -52,6 +62,16 @@
   .minesweeper {
     max-width: 400px;
     transform: none;
+  }
+
+  .game-shell {
+    padding-bottom: 54px;
+    transform: none;
+  }
+
+  .game-tool-button {
+    width: 46px;
+    height: 46px;
   }
 
   .products-section {
@@ -214,6 +234,21 @@
 
   .tutorial-panel {
     padding: 18px;
+  }
+
+  .customizer-panel {
+    width: min(92vw, 620px);
+    padding: 18px;
+  }
+
+  .preview-panel {
+    grid-template-columns: 58px 42px 58px;
+    gap: 10px;
+  }
+
+  .preview-board {
+    grid-template-columns: repeat(3, min(42px, 14vw));
+    grid-auto-rows: min(42px, 14vw);
   }
 
   .tutorial-steps li {
