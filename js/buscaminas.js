@@ -386,4 +386,13 @@ document.addEventListener('click', (event) => {
 window.addEventListener('resize', () => {
   if (!isMobileGame()) closeMobileActionMenu();
 });
+
+window.addEventListener('pageshow', (event) => {
+  const boardIsMissing = boardElement.children.length !== rows * cols;
+
+  if (event.persisted || boardIsMissing) {
+    resetGame();
+  }
+});
+
 resetGame();
